@@ -11,8 +11,6 @@ export class UserService {
 
   setUser(data: any){
     this.user = data.data.student;
-    console.log(data);
-    console.log(data.data);
   }
 
   getUser(){
