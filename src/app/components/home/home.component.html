@@ -1,6 +1,6 @@
 <div *ngIf="user">
   <h2>Student Information</h2>
-  <ul>
+  <ul style="list-style: none;">
     <li><strong>AM:</strong> {{ user .info.am }}</li>
     <li><strong>First Name:</strong> {{ user.info.firstName }}</li>
     <li><strong>Last Name:</strong> {{ user.info.lastName }}</li>
@@ -11,17 +11,25 @@
   </ul>
 
   <h2>Grades</h2>
-  <ul>
-    <li><strong>Total Passed Courses:</strong> {{ user.grades.totalPassedCourses }}</li>
-    <li><strong>Total Average Grade:</strong> {{ user.grades.totalAverageGrade }}</li>
-    <li><strong>Total ECTS:</strong> {{ user.grades.totalEcts }}</li>
-    <li>
-      <strong>Courses:</strong>
-      <ul>
-        <li *ngFor="let course of user.grades.courses">
-          {{ course.id }} : {{ course.name }} - {{ course.grade }}
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
+  <table mat-table [dataSource]="user.grades.courses" style="font-size: 1rem;">
+    <!-- Course Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Course Name </th>
+      <td mat-cell *matCellDef="let course">{{ course.name }}</td>
+    </ng-container>
+
+    <!-- Course Grade Column -->
+    <ng-container matColumnDef="grade">
+      <th mat-header-cell *matHeaderCellDef>Grade</th>
+      <td mat-cell *matCellDef="let course">{{ course.grade }}</td>
+    </ng-container>
+
+    <!-- Course ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Course ID</th>
+      <td mat-cell *matCellDef="let course">{{ course.id }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['name', 'grade', 'id']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['name', 'grade', 'id']"></tr>
+  </table>
