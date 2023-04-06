@@ -7,9 +7,9 @@ import { SubjectsComponent } from './components/subjects/subjects.component';
 import { ServicesComponent } from './components/services/services.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
   { path: 'subjects', component: SubjectsComponent, canActivate: [AuthGuard]},
   { path: 'services', component: ServicesComponent, canActivate: [AuthGuard]},
 ];
