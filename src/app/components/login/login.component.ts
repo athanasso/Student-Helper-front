@@ -19,6 +19,7 @@ export class LoginComponent {
     this.service.getUser(this.username, this.password).subscribe({
       next: data => {
         this.userService.setUser(data);
+        this.userService.isLoggedIn = true;
       },
       error: error => {
         console.log(error);

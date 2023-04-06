@@ -9,6 +9,8 @@ export class UserService {
 
   user!: User;
 
+  isLoggedIn: boolean = false;
+
   setUser(data: any){
     this.user = data.data.student;
   }
