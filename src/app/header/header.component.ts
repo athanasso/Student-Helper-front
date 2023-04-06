@@ -9,6 +9,12 @@ import { UserService } from '../services/user.service';
 })
 export class HeaderComponent {
 
+  showMenu:boolean = false;
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
+
   constructor(private router: Router, private service: UserService) { }
 
   currentRoute!: string;

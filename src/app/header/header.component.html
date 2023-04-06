@@ -1,9 +1,9 @@
 <nav *ngIf="currentRoute !== '/login'" class="navbar navbar-expand-md navbar-light bg-light">
-  <a class="navbar-brand" href="#">Student Helper</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand" routerLink="home">Student Helper</a>
+  <button class="navbar-toggler" (click)="toggleMenu()" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="collapse navbar-collapse justify-content-center" [ngClass]="{'show': showMenu}" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
@@ -17,7 +17,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Contact</a>
       </li>
-      <button class="btn btn-danger" (click)="signOut()">Sign Out</button>
     </ul>
+    <button class="btn btn-danger" (click)="signOut()">Sign Out</button>
   </div>
 </nav>
