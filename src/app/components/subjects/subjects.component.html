@@ -1,5 +1,21 @@
 <div *ngIf="user">
-<h2>Grades</h2>
+  <h2>Grades</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Total Passed Courses</th>
+        <th>Total Average Grade</th>
+        <th>Total ECTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="user && user.grades">
+        <td>{{ user.grades.totalPassedCourses }}</td>
+        <td>{{ user.grades.totalAverageGrade }}</td>
+        <td>{{ user.grades.totalEcts }}</td>
+      </tr>
+    </tbody>
+  </table>
   <table mat-table [dataSource]="user.grades.courses" style="font-size: 1rem;">
     <!-- Course Name Column -->
     <ng-container matColumnDef="name">
