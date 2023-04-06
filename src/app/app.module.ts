@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { SubjectsComponent } from './components/subjects/subjects.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HeaderComponent } from './header/header.component';
     LoginComponent,
     HomeComponent,
     HeaderComponent,
+    SubjectsComponent,
   ],
   imports: [
     BrowserModule,
