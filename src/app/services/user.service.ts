@@ -16,7 +16,8 @@ export class UserService {
       department: "",
       currentSemester: 0,
       registrationYear: 0,
-      curriculum: ""
+      curriculum: "",
+      deletionYear: "",
     },
     grades: {
       totalPassedCourses: 0,
@@ -45,7 +46,8 @@ export class UserService {
         department: "",
         currentSemester: 0,
         registrationYear: 0,
-        curriculum: ""
+        curriculum: "",
+        deletionYear: ""
       },
       grades: {
         totalPassedCourses: 0,
@@ -67,7 +69,8 @@ export interface User{
     department: string,
     currentSemester: number,
     registrationYear: number,
-    curriculum: string
+    curriculum: string,
+    deletionYear: string
   },
   grades: {
     totalPassedCourses: number,
