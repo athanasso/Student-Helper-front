@@ -30,7 +30,7 @@ export class UserService {
   isLoggedIn: boolean = false;
 
   setUser(data: any){
-    this.user = data.data.student;
+    this.user = data.student;
   }
 
   getUser(){
