@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Course } from './../../services/user.service';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { User, UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,9 +14,28 @@ import { User, UserService } from 'src/app/services/user.service';
 export class SubjectsComponent {
   constructor(private userService: UserService){}
 
-  user!: User;
+  grades: any;
+  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  dataSource!: MatTableDataSource<Course>;
 
   ngOnInit(): void {
-    this.user = this.userService.getUser();
+    let user = this.userService.getUser();
+    this.grades = user.grades;
+    this.dataSource = new MatTableDataSource(this.grades.courses);
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    console.log(this.dataSource);
+  }
+
+  pageSize = 10;
+  pageIndex = 0;
+
+  handlePageEvent(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
   }
 }

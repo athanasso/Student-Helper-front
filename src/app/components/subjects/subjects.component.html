@@ -1,4 +1,4 @@
-<div *ngIf="user">
+<div *ngIf="grades">
   <h2>Grades</h2>
   <table class="table">
     <thead>
@@ -9,33 +9,43 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngIf="user && user.grades">
-        <td>{{ user.grades.totalPassedCourses }}</td>
-        <td>{{ user.grades.totalAverageGrade }}</td>
-        <td>{{ user.grades.totalEcts }}</td>
+      <tr *ngIf="grades">
+        <td>{{ grades.totalPassedCourses }}</td>
+        <td>{{ grades.totalAverageGrade }}</td>
+        <td>{{ grades.totalEcts }}</td>
       </tr>
     </tbody>
   </table>
-  <table mat-table [dataSource]="user.grades.courses" style="font-size: 1rem;">
+  <table mat-table [dataSource]="dataSource" matSort>
     <!-- Course Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Course Name </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">Course Name </th>
       <td mat-cell *matCellDef="let course">{{ course.name }}</td>
     </ng-container>
 
     <!-- Course Grade Column -->
     <ng-container matColumnDef="grade">
-      <th mat-header-cell *matHeaderCellDef>Grade</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by grade">Grade</th>
       <td mat-cell *matCellDef="let course">{{ course.grade }}</td>
     </ng-container>
 
     <!-- Course ID Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>Course ID</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Course ID</th>
       <td mat-cell *matCellDef="let course">{{ course.id }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="['name', 'grade', 'id']"></tr>
     <tr mat-row *matRowDef="let row; columns: ['name', 'grade', 'id']"></tr>
   </table>
+  <mat-paginator
+        #paginator
+        [length]="grades.courses.length"
+        [pageSize]="pageSize"
+        [pageIndex]="pageIndex"
+        [pageSizeOptions]="[10, 20, 50, 100]"
+        aria-label="Select page"
+        showFirstLastButtons
+        (page)="handlePageEvent($event)">
+  </mat-paginator>
 </div>
