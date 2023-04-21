@@ -25,6 +25,7 @@ export class LoginComponent {
   }
 
   onSubmit(){
+    this.error = '';
     this.message = 'Logging in';
     if (this.loginForm.valid){
       this.service.getUser(this.loginForm.value.username, this.loginForm.value.password).subscribe(
