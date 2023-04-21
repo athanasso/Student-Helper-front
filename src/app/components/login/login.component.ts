@@ -14,6 +14,8 @@ export class LoginComponent {
   constructor(private service: LoginService, private userService: UserService, private router: Router, private fb: FormBuilder) {}
 
   loginForm!: FormGroup;
+  message: string = '';
+  error: string = '';
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -23,15 +25,19 @@ export class LoginComponent {
   }
 
   onSubmit(){
+    this.message = 'Logging in';
     if (this.loginForm.valid){
-      this.service.getUser(this.loginForm.value.username, this.loginForm.value.password).subscribe({
-        next: data => {
+      this.service.getUser(this.loginForm.value.username, this.loginForm.value.password).subscribe(
+        (data) => {
           this.userService.setUser(data);
           this.userService.isLoggedIn = true;
+          this.router.navigate(['home']);
         },
-        error: error => console.log(error),
-        complete: () => this.router.navigate(['home'])
-      });
+        (error) => {
+          console.log(error);
+          this.error = error.statusText;
+        }
+      );
     }
   }
 }

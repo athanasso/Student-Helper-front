@@ -11,6 +11,15 @@
       <label for="password">Password</label><span class="text-danger">*</span>
       <input type="password" class="form-control" id="password" formControlName="password" required>
     </div>
+    <!-- Display a message if there is no error -->
+    <div *ngIf="!error && message" class="message success">
+      {{ message }}
+    </div>
+
+    <!-- Display an error message if there is an error -->
+    <div *ngIf="error && error!=''" class="message error">
+      {{ error }}
+    </div>
     <button type="submit" class="btn btn-primary">Sign In</button>
   </form>
 </div>
