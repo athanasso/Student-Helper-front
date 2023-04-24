@@ -1,6 +1,6 @@
 <div *ngIf="grades">
   <h2>Grades</h2>
-  <table class="table">
+  <table class="s-table">
     <thead>
       <tr>
         <th>Total Passed Courses</th>
@@ -16,7 +16,7 @@
       </tr>
     </tbody>
   </table>
-  <table mat-table [dataSource]="dataSource" matSort>
+  <table mat-table [dataSource]="dataSource" class="table" matSort>
     <!-- Course Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">Course Name </th>

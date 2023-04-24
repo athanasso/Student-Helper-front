@@ -1,0 +1,115 @@
+/* CSS for Grades section */
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.s-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.s-table th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.s-table th {
+  background-color: #f2f2f2;
+}
+
+/* CSS for Mat Table */
+.mat-header-cell, .mat-cell {
+  padding: 10px;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+}
+
+.mat-header-row {
+  background-color: #f2f2f2;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.mat-paginator {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table th,
+.table td {
+  padding: 12px 10px;
+  font-size: 16px;
+}
+
+
+.table th {
+  background-color: #0078d4;
+  color: #ffffff;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #e2e2e2;
+}
+
+.mat-paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mat-paginator .mat-select-arrow {
+  display: none;
+}
+
+.mat-paginator .mat-select-value {
+  font-size: 16px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.mat-flat-button,
+.mat-raised-button {
+  margin-right: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.mat-flat-button {
+  background-color: #0078d4;
+  color: #ffffff;
+}
+
+.mat-flat-button:hover {
+  background-color: #005a9e;
+}
+
+.mat-raised-button {
+  background-color: #ffffff;
+  color: #0078d4;
+  border: 1px solid #0078d4;
+}
+
+.mat-raised-button:hover {
+  background-color: #f2f2f2;
+}
