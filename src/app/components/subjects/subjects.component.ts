@@ -45,7 +45,7 @@ export class SubjectsComponent {
 
   search(searchQuery: string) {
     if (!searchQuery) {
-      this.filteredResponse = this.grades.courses;
+      this.filteredResponse = this.dataSource;
     } else {
       this.filteredResponse = this.grades.courses.filter((course: { name: string; grade: number; id: string; }) => {
         return course.name.toLowerCase().includes(searchQuery.toLowerCase())
