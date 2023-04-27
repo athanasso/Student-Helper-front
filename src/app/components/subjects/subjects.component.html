@@ -16,7 +16,10 @@
       </tr>
     </tbody>
   </table>
-  <table mat-table [dataSource]="dataSource" class="table" matSort>
+  <mat-form-field [formGroup]="searchForm">
+    <input matInput type="text" class="form-control" formControlName="searchQuery" placeholder="Search...">
+  </mat-form-field>
+  <table mat-table [dataSource]="filteredResponse" class="table" matSort>
     <!-- Course Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">Course Name </th>

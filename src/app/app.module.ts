@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatOptionModule } from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ import { ServicesComponent } from './components/services/services.component';
     ReactiveFormsModule,
     MatSortModule,
     MatPaginatorModule,
+    MatOptionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
