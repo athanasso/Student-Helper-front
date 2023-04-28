@@ -16,9 +16,22 @@
       </tr>
     </tbody>
   </table>
-  <mat-form-field [formGroup]="searchForm">
-    <input matInput type="text" class="form-control" formControlName="searchQuery" placeholder="Search...">
-  </mat-form-field>
+  <div class="search-form">
+    <div class="input-container">
+      <mat-form-field [formGroup]="searchForm" appearance="fill">
+        <input matInput type="text" class="form-control" formControlName="searchQuery" placeholder="Search...">
+      </mat-form-field>
+    </div>
+    <div class="select-container">
+      <mat-form-field [formGroup]="searchForm" appearance="fill">
+        <select matNativeControl formControlName="searchType" class="search-select">
+          <option value="name">Name</option>
+          <option value="grade">Grade</option>
+          <option value="id">ID</option>
+        </select>
+      </mat-form-field>
+    </div>
+  </div>
   <table mat-table [dataSource]="filteredResponse" class="table" matSort>
     <!-- Course Name Column -->
     <ng-container matColumnDef="name">
@@ -43,7 +56,7 @@
   </table>
   <mat-paginator
         #paginator
-        [length]="grades.totalPassedCourses"
+        [length]="filteredResponse.length"
         [pageSize]="pageSize"
         [pageIndex]="pageIndex"
         [pageSizeOptions]="[10, 20, 50, 100]"

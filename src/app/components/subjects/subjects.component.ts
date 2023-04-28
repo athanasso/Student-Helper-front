@@ -29,28 +29,36 @@ export class SubjectsComponent {
     this.grades = user.grades;
     this.dataSource = new MatTableDataSource(this.grades.courses);
     this.filteredResponse = this.dataSource;
-
     this.searchForm = this.fb.group({
-      searchQuery: ['']
+      searchQuery: [''],
+      searchType: ['name'] // Set the default selection to 'name'
     });
-    this.searchSubscription = this.searchForm.get('searchQuery')!.valueChanges
+
+    this.searchSubscription = this.searchForm.valueChanges
       .pipe(
         debounceTime(400),
         distinctUntilChanged()
       )
-      .subscribe(query => {
-        this.search(query);
+      .subscribe(formValue => {
+        let query = formValue.searchQuery;
+        let searchType = formValue.searchType;
+        this.search(query, searchType);
       });
   }
 
-  search(searchQuery: string) {
+  search(searchQuery: string, searchType: string) {
     if (!searchQuery) {
       this.filteredResponse = this.dataSource;
     } else {
       this.filteredResponse = this.grades.courses.filter((course: { name: string; grade: number; id: string; }) => {
-        return course.name.toLowerCase().includes(searchQuery.toLowerCase())
-        || course.grade == parseInt(searchQuery)
-        || course.id.toLowerCase().includes(searchQuery.toLowerCase());
+        if (searchType === 'name') {
+          return course.name.toLowerCase().includes(searchQuery.toLowerCase());
+        } else if (searchType === 'id') {
+          return course.id.toLowerCase().includes(searchQuery.toLowerCase());
+        } else if (searchType === 'grade') {
+          return course.grade.toString() === searchQuery;
+        }
+        return;
       });
     }
   }

@@ -7,12 +7,11 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatOptionModule } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
@@ -38,7 +37,6 @@ import { ServicesComponent } from './components/services/services.component';
     ReactiveFormsModule,
     MatSortModule,
     MatPaginatorModule,
-    MatOptionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
