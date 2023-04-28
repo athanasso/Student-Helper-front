@@ -3,7 +3,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatSort, MatSortable, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 import { User, UserService } from 'src/app/services/user.service';
@@ -31,7 +31,7 @@ export class SubjectsComponent {
     this.filteredResponse = this.dataSource;
     this.searchForm = this.fb.group({
       searchQuery: [''],
-      searchType: ['name'] // Set the default selection to 'name'
+      searchType: ['name']
     });
 
     this.searchSubscription = this.searchForm.valueChanges
@@ -64,6 +64,7 @@ export class SubjectsComponent {
   }
 
   ngAfterViewInit() {
+    this.sort.sort(({ id: 'id', start: 'asc' }) as MatSortable);
     this.filteredResponse.paginator = this.paginator;
     this.filteredResponse.sort = this.sort;
   }
