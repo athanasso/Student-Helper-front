@@ -19,14 +19,21 @@
   <div class="search-form">
     <div class="input-container">
       <mat-form-field [formGroup]="searchForm" appearance="fill">
-        <input matInput type="text" class="form-control" formControlName="searchQuery" placeholder="Search By...">
+        <ng-container *ngIf="searchForm.get('searchType')!.value === 'grade3'; else input">
+          <input matInput type="text" class="form-control" formControlName="searchQuery" placeholder="Enter grade range as min-max (e.g., 5-6)">
+        </ng-container>
+        <ng-template #input>
+          <input matInput type="text" class="form-control" formControlName="searchQuery" placeholder="Search By...">
+        </ng-template>
       </mat-form-field>
     </div>
     <div class="select-container">
       <mat-form-field [formGroup]="searchForm" appearance="fill">
         <select matNativeControl formControlName="searchType" class="search-select">
           <option value="name">Name</option>
-          <option value="grade">Grade</option>
+          <option value="grade1">Absolute Grade</option>
+          <option value="grade2">Decimal Grade</option>
+          <option value="grade3">Range Of Grades</option>
           <option value="id">ID</option>
         </select>
       </mat-form-field>
