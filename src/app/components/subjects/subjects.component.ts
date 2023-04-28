@@ -64,7 +64,7 @@ export class SubjectsComponent {
             return grade >= minGrade && grade <= maxGrade;
           }
         }
-        return;
+        return this.dataSource;
       });
     }
   }
