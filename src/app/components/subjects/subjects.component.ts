@@ -51,16 +51,12 @@ export class SubjectsComponent {
       this.filteredResponse = this.dataSource;
     } else {
       this.filteredResponse = this.grades.courses.filter((course: { name: string; grade: number; id: string; }) => {
-        if (searchType === 'name') {
-          return course.name.toLowerCase().includes(searchQuery.toLowerCase());
-        } else if (searchType === 'id') {
-          return course.id.toLowerCase().includes(searchQuery.toLowerCase());
-        } else if (searchType === 'grade1') {
-          return course.grade.toString() === searchQuery;
-        } else if (searchType === 'grade2') {
-          return course.grade.toString().startsWith(searchQuery);
-        } else if (searchType === 'grade3') {
-          let rangeMatch = searchQuery.match(/^(\d+(\.\d+)?)\-(\d+(\.\d+)?)$/);
+        if (searchType === 'name') return course.name.toLowerCase().includes(searchQuery.toLowerCase());
+        else if (searchType === 'id') return course.id.toLowerCase().includes(searchQuery.toLowerCase());
+        else if (searchType === 'grade1') return course.grade.toString() === searchQuery;
+        else if (searchType === 'grade2') return course.grade.toString().startsWith(searchQuery);
+        else if (searchType === 'grade3') {
+        let rangeMatch = searchQuery.match(/^(\d+(\.\d+)?)\-(\d+(\.\d+)?)$/);
           if (rangeMatch) {
             let minGrade = parseFloat(rangeMatch[1]);
             let maxGrade = parseFloat(rangeMatch[3]);
