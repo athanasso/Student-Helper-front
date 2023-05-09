@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent {
 
-  constructor(private service: LoginService, private userService: UserService, private router: Router, private fb: FormBuilder) {}
+  constructor(private service: LoginService, private userService: UserService, private router: Router, private fb: FormBuilder, private snackBar: MatSnackBar) {}
 
   loginForm!: FormGroup;
   message: string = '';
@@ -37,8 +38,20 @@ export class LoginComponent {
         (error) => {
           console.log(error);
           this.error = error.statusText;
+          this.openSnackBar(this.error);
         }
       );
     }
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message);
+    setTimeout(()=> {
+      this.dismiss();
+    }, 2000);
+  }
+
+  dismiss() {
+    this.snackBar.dismiss();
   }
 }
