@@ -23,20 +23,7 @@ export class UserService {
       totalPassedCourses: 0,
       totalAverageGrade: 0,
       totalEcts: 0,
-      courses: [],
-      neededCourses: {
-        choiceCoursesNeeded: 0,
-        mandatoryCoursesNeeded: 0,
-        mandatoryCoursesLeft: [],
-        basicCoursesNeeded: 0,
-        basicCoursesLeft: [],
-        choiceCoursesFromSameBasicNeeded: 0,
-        choiceCoursesFromSameBasicLeft: [],
-        choiceCoursesFromOtherBasicAvailable: 0,
-        choiceCoursesFromOtherBasicLeft: [],
-        generalCoursesPassed: 0,
-        generalCoursesLeft: []}
-    }
+      courses: []
   };
 
   isLoggedIn: boolean = false;
@@ -66,20 +53,7 @@ export class UserService {
         totalAverageGrade: 0,
         totalEcts: 0,
         courses: [],
-        neededCourses: {
-          choiceCoursesNeeded: 0,
-          mandatoryCoursesNeeded: 0,
-          mandatoryCoursesLeft: [],
-          basicCoursesNeeded: 0,
-          basicCoursesLeft: [],
-          choiceCoursesFromSameBasicNeeded: 0,
-          choiceCoursesFromSameBasicLeft: [],
-          choiceCoursesFromOtherBasicAvailable: 0,
-          choiceCoursesFromOtherBasicLeft: [],
-          generalCoursesPassed: 0,
-          generalCoursesLeft: []
-        }
-      },
+
     };
     this.isLoggedIn = false;
     this.router.navigate(['login']);
@@ -101,8 +75,7 @@ export interface User{
     totalPassedCourses: number,
     totalAverageGrade: number,
     totalEcts: number,
-    courses: Course[],
-    neededCourses: NeededCourses
+    courses: Course[]
   }
 }
 
@@ -110,33 +83,4 @@ export interface Course{
   id: string,
   name: string,
   grade: number
-}
-
-export interface NeededCourses{
-  choiceCoursesNeeded: number,
-  mandatoryCoursesNeeded: number,
-  mandatoryCoursesLeft: {
-    id: string,
-    name: string
-  }[],
-  basicCoursesNeeded: number,
-  basicCoursesLeft: {
-    id: string,
-    name: string
-  }[],
-  choiceCoursesFromSameBasicNeeded: number,
-  choiceCoursesFromSameBasicLeft: {
-    id: string,
-    name: string
-  }[],
-  choiceCoursesFromOtherBasicAvailable: number,
-  choiceCoursesFromOtherBasicLeft: {
-    id: string,
-    name: string
-  }[],
-  generalCoursesPassed: number,
-  generalCoursesLeft: {
-    id: string,
-    name: string
-  }[]
 }
