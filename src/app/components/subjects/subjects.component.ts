@@ -1,12 +1,11 @@
 import { Course } from './../../services/user.service';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, MatSortable, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
-import { User, UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-subjects',
