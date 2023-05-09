@@ -35,7 +35,9 @@ export class UserService {
         choiceCoursesFromOtherBasicAvailable: 0,
         choiceCoursesFromOtherBasicLeft: [],
         generalCoursesPassed: 0,
-        generalCoursesLeft: []}
+        generalCoursesLeft: [],
+        passedAll: false
+      }
     }
   };
 
@@ -77,7 +79,8 @@ export class UserService {
           choiceCoursesFromOtherBasicAvailable: 0,
           choiceCoursesFromOtherBasicLeft: [],
           generalCoursesPassed: 0,
-          generalCoursesLeft: []
+          generalCoursesLeft: [],
+          passedAll: false
         }
       }
     };
@@ -138,5 +141,6 @@ export interface NeededCourses{
   generalCoursesLeft: {
     id: string,
     name: string
-  }[]
+  }[],
+  passedAll: boolean;
 }
