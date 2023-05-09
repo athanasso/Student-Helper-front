@@ -1,5 +1,6 @@
+import { NeededCourses } from './../../services/user.service';
 import { Component } from '@angular/core';
-import { User, UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-services',
@@ -7,5 +8,12 @@ import { User, UserService } from 'src/app/services/user.service';
   styleUrls: ['./services.component.scss']
 })
 export class ServicesComponent {
+  neededCourses!: NeededCourses;
 
+  constructor(private userService: UserService){}
+
+  ngOnInit(): void {
+    let user = this.userService.getUser();
+    this.neededCourses = user.grades.neededCourses;
+  }
 }
