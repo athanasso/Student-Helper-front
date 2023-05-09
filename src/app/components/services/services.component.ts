@@ -8,5 +8,12 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./services.component.scss']
 })
 export class ServicesComponent {
+  neededCourses!: NeededCourses;
 
+  constructor(private userService: UserService){}
+
+  ngOnInit(): void {
+    let user = this.userService.getUser();
+    this.neededCourses = user.grades.neededCourses;
+  }
 }
