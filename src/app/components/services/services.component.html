@@ -80,7 +80,7 @@
     </mat-paginator>
   </div>
 
-  <div *ngIf="neededCourses.choiceCoursesFromOtherBasicAvailable > 0 || neededCourses.choiceCoursesNeeded > 0">
+  <div *ngIf="neededCourses.choiceCoursesFromOtherBasicAvailable > 0 && neededCourses.choiceCoursesNeeded > 0">
     <p *ngIf="neededCourses.basicCoursesNeeded == 4"><span style="color: red;">(*We need at least one basic Specialisation flow subject to figure out the subjects*)</span></p>
     <p>Choice courses from other Specialisation flow available: {{ neededCourses.choiceCoursesFromOtherBasicAvailable }} <span style="color: red;">(*At most 7*)</span></p>
     <p>These are your options</p>
@@ -108,7 +108,7 @@
     </mat-paginator>
   </div>
 
-  <div *ngIf="neededCourses.generalCoursesPassed < 2">
+  <div *ngIf="neededCourses.generalCoursesPassed < 2 && neededCourses.choiceCoursesNeeded > 0">
     <p>Choice courses from general subjects taken: {{ neededCourses.generalCoursesPassed }}</p>
     <p style="color: red;">*You can pass max 2*</p>
     <p>The below subjects are available</p>
