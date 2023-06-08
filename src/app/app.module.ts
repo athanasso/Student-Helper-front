@@ -16,6 +16,10 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
+import { ICEComponent } from './components/services/ICE/ICE.component';
+import { N2Component } from './components/services/N2/N2.component';
+import { N1Component } from './components/services/N1/N1.component';
+import { PeirComponent } from './components/services/Peir/Peir.component';
 import { ServicesComponent } from './components/services/services.component';
 
 @NgModule({
@@ -25,6 +29,10 @@ import { ServicesComponent } from './components/services/services.component';
     HomeComponent,
     HeaderComponent,
     SubjectsComponent,
+    ICEComponent,
+    N2Component,
+    N1Component,
+    PeirComponent,
     ServicesComponent,
   ],
   imports: [

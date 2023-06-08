@@ -41,6 +41,7 @@ export interface Info{
   currentSemester: number,
   registrationYear: number,
   curriculum: string,
+  curriculumCode: string,
   deletionYear: string,
   thesis: Thesis
 }
