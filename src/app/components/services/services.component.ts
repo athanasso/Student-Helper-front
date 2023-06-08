@@ -1,4 +1,3 @@
-import { NeededCourses } from './../../services/user.service';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./services.component.scss']
 })
 export class ServicesComponent {
-  neededCourses!: NeededCourses;
+  neededCourses: any;
   @ViewChild('mandatoryPaginator') mandatoryPaginator!: MatPaginator;
   @ViewChild('basicPaginator') basicPaginator!: MatPaginator;
   @ViewChild('choiceFromSameBasicPaginator') choiceFromSameBasicPaginator!: MatPaginator;

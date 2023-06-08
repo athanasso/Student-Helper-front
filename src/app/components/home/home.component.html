@@ -1,4 +1,4 @@
-<div class="student-info" *ngIf="user">
+<div class="student-info">
   <h2>Student Information</h2>
   <ul>
     <li><strong>AM:</strong> {{ user .info.am }}</li>
@@ -8,6 +8,18 @@
     <li><strong>Current Semester:</strong> {{ user.info.currentSemester }}</li>
     <li><strong>Registration Year:</strong> {{ user.info.registrationYear }}</li>
     <li><strong>Curriculum:</strong> {{ user.info.curriculum }}</li>
+  </ul>
+</div>
+<div class="student-info" *ngIf="user.info.thesis.code!=''">
+  <h2>Thesis Information</h2>
+  <ul>
+    <li><strong>Title:</strong> {{ user.info.thesis.title }}</li>
+    <li><strong>Code:</strong> {{ user.info.thesis.code }}</li>
+    <li><strong>Assignment Date:</strong> {{ user.info.thesis.assignmentDate }}</li>
+    <li><strong>Completion Date:</strong> {{ user.info.thesis.completionDate }}</li>
+    <li><strong>Exam Date:</strong> {{ user.info.thesis.examDate }}</li>
+    <li><strong>Status:</strong> {{ user.info.thesis.status }}</li>
+    <li><strong>Last Due Date:</strong> {{ user.info.thesis.lastDueDate }}</li>
   </ul>
 </div>
 <mat-card>
