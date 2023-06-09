@@ -4,11 +4,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-ice',
-  templateUrl: './ice.component.html',
-  styleUrls: ['./ice.component.scss']
+  selector: 'app-ice1',
+  templateUrl: './ice1.component.html',
+  styleUrls: ['./ice1.component.scss']
 })
-export class ICEComponent {
+export class ICE1Component {
   neededCourses: any;
   @ViewChild('mandatoryPaginator') mandatoryPaginator!: MatPaginator;
   @ViewChild('basicPaginator') basicPaginator!: MatPaginator;

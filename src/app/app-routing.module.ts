@@ -5,7 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { ServicesComponent } from './components/services/services.component';
-import { ICEComponent } from './components/services/ICE/ICE.component';
+import { ICE1Component } from './components/services/ICE1/ICE1.component';
 import { N2Component } from './components/services/N2/N2.component';
 import { N1Component } from './components/services/N1/N1.component';
 import { PeirComponent } from './components/services/Peir/Peir.component';
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'subjects', component: SubjectsComponent, canActivate: [AuthGuard]},
   { path: 'services', component: ServicesComponent, canActivate: [AuthGuard]},
-  { path: 'services/ICE1', component: ICEComponent, canActivate: [AuthGuard]},
+  { path: 'services/ICE1', component: ICE1Component, canActivate: [AuthGuard]},
   { path: 'services/N2', component: N2Component, canActivate: [AuthGuard]},
   { path: 'services/N1', component: N1Component, canActivate: [AuthGuard]},
   { path: 'services/Peir', component: PeirComponent, canActivate: [AuthGuard]},
