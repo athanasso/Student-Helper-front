@@ -1,1 +1,121 @@
-<p>services works!</p>
+<div *ngIf="!neededCourses.passedAll; else passed">
+  <div *ngIf="neededCourses.mandatoryCoursesNeeded > 0">
+    <p>Mandatory courses needed: {{ neededCourses.mandatoryCoursesNeeded }}</p>
+    <table mat-table [dataSource]="mandatoryCourses">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Course Name </th>
+        <td mat-cell *matCellDef="let course">{{ course.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Course ID</th>
+        <td mat-cell *matCellDef="let course">{{ course.id }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
+    </table>
+    <mat-paginator #mandatoryPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]" [showFirstLastButtons]="true"
+      [length]="neededCourses.mandatoryCoursesLeft.length" [pageIndex]="0">
+    </mat-paginator>
+  </div>
+
+  <div *ngIf="neededCourses.basicCoursesNeeded > 0">
+    <p>Courses you need from Specialisation flow: {{ neededCourses.basicCoursesNeeded }}</p>
+    <table mat-table [dataSource]="basicCourses">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Course Name </th>
+        <td mat-cell *matCellDef="let course">{{ course.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Course ID</th>
+        <td mat-cell *matCellDef="let course">{{ course.id }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
+    </table>
+    <mat-paginator #basicPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]" [showFirstLastButtons]="true"
+      [length]="neededCourses.basicCoursesLeft.length" [pageIndex]="0">
+    </mat-paginator>
+  </div>
+
+  <div *ngIf="neededCourses.basicCoursesNeeded">
+    <div *ngIf="neededCourses.choice1CoursesNeeded">
+      <p>Choice courses you need from first choice courses: {{ neededCourses.choice1CoursesNeeded }} <span
+          style="color: red;">(*At least 2*)</span></p>
+      <p>These are your options</p>
+      <table mat-table [dataSource]="choiceCoursesFromSameBasic1">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Course Name </th>
+          <td mat-cell *matCellDef="let course">{{ course.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Course ID</th>
+          <td mat-cell *matCellDef="let course">{{ course.id }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
+      </table>
+      <mat-paginator #choiceFromSameBasicPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"
+        [showFirstLastButtons]="true" [length]="neededCourses.choice1CoursesLeft.length" [pageIndex]="0">
+      </mat-paginator>
+    </div>
+
+    <div *ngIf="neededCourses.choice2CoursesNeeded">
+      <p>Choice courses you need from second choice courses: {{ neededCourses.choice2CoursesNeeded }} <span
+          style="color: red;">(*At least 4*)</span></p>
+      <p>These are your options</p>
+      <table mat-table [dataSource]="choiceCoursesFromSameBasic2">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Course Name </th>
+          <td mat-cell *matCellDef="let course">{{ course.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Course ID</th>
+          <td mat-cell *matCellDef="let course">{{ course.id }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
+      </table>
+      <mat-paginator #choiceFromSameBasicPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"
+        [showFirstLastButtons]="true" [length]="neededCourses.choice2CoursesLeft.length" [pageIndex]="0">
+      </mat-paginator>
+    </div>
+
+    <div *ngIf="neededCourses.choiceFromOthersBasicPassed < 2">
+      <p>Choice courses from other Specialisation Flow taken: {{ neededCourses.choiceFromOthersBasicPassed }}</p>
+      <p style="color: red;">*You can pass max 2*</p>
+      <p>The below subjects are available</p>
+      <table mat-table [dataSource]="choiceCoursesFromOtherBasic">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Course Name </th>
+          <td mat-cell *matCellDef="let course">{{ course.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Course ID</th>
+          <td mat-cell *matCellDef="let course">{{ course.id }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
+      </table>
+      <mat-paginator #generalPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]" [showFirstLastButtons]="true"
+        [length]="neededCourses.choiceFromOthersBasicAvailable.length" [pageIndex]="0">
+      </mat-paginator>
+    </div>
+  </div>
+
+</div>
+<ng-template #passed>
+  <mat-card>
+    <mat-card-title>You have passed all necessary subjects for diploma</mat-card-title>
+    <mat-card-content>*Check if you need to finish your diploma assingment*</mat-card-content>
+  </mat-card>
+</ng-template>
