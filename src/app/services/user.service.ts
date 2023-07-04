@@ -5,25 +5,43 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UserService {
+  private timeoutId: any; // Variable to store the timeout ID
 
   constructor(private router: Router) {}
 
-  setUser(data: any){
+  setUser(data: any) {
     localStorage.setItem('user', JSON.stringify(data.student));
+    this.scheduleLocalStorageDeletion(); // Schedule local storage deletion
   }
 
-  getUser(){
+  getUser() {
     const user = localStorage.getItem('user');
     return user ? JSON.parse(user) : null;
   }
 
-  signOut(){
+  signOut() {
     localStorage.removeItem('user');
+    this.clearLocalStorageDeletion(); // Clear scheduled local storage deletion
     this.router.navigate(['login']);
   }
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('user');
+  }
+
+  private scheduleLocalStorageDeletion() {
+    this.clearLocalStorageDeletion(); // Clear any existing timeout
+
+    const timeDelay = 30 * 60 * 1000; // Time delay in milliseconds (30 minutes)
+
+    this.timeoutId = setTimeout(() => {
+      localStorage.removeItem('user');
+      console.log('Local storage deleted after 30 minutes.');
+    }, timeDelay);
+  }
+
+  private clearLocalStorageDeletion() {
+    clearTimeout(this.timeoutId);
   }
 }
 
