@@ -8,23 +8,22 @@ export class UserService {
 
   constructor(private router: Router) {}
 
-  user!: User;
-  emptyUser!: User;
-
-  isLoggedIn: boolean = false;
-
   setUser(data: any){
-    this.user = data.student;
+    localStorage.setItem('user', JSON.stringify(data.student));
   }
 
   getUser(){
-    return this.user;
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
   }
 
   signOut(){
-    this.user = this.emptyUser;
-    this.isLoggedIn = false;
+    localStorage.removeItem('user');
     this.router.navigate(['login']);
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('user');
   }
 }
 

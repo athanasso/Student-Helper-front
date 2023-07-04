@@ -32,7 +32,6 @@ export class LoginComponent {
       this.service.getUser(this.loginForm.value.username, this.loginForm.value.password).subscribe(
         (data) => {
           this.userService.setUser(data);
-          this.userService.isLoggedIn = true;
           this.router.navigate(['home']);
         },
         (error) => {
