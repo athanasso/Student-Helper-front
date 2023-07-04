@@ -60,8 +60,7 @@ export interface Thesis{
   assignmentDate: string,
   completionDate: string,
   examDate: string,
-  status: string,
-  lastDueDate: string
+  status: string
 }
 export interface Course{
   id: string,
