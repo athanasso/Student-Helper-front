@@ -9,10 +9,10 @@ import { ICE1Component } from './components/services/ICE1/ICE1.component';
 import { N2Component } from './components/services/N2/N2.component';
 import { N1Component } from './components/services/N1/N1.component';
 import { PeirComponent } from './components/services/Peir/Peir.component';
-import { ICE1Guard } from './guards/curriculum/ICE1.guard';
-import { N2Guard } from './guards/curriculum/N2.guard';
-import { N1Guard } from './guards/curriculum/N1.gaurd';
-import { PeirGuard } from './guards/curriculum/Peir.guard';
+import { ICE1Guard } from './guards/curriculum/ice1.guard';
+import { N2Guard } from './guards/curriculum/n2.guard';
+import { N1Guard } from './guards/curriculum/n1.gaurd';
+import { PeirGuard } from './guards/curriculum/peir.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },

@@ -6,7 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-ice1',
   templateUrl: './ice1.component.html',
-  styleUrls: ['./ice1.component.scss']
+  styleUrls: ['../services.css']
 })
 export class ICE1Component {
   neededCourses: any;

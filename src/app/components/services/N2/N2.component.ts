@@ -6,7 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-N2',
   templateUrl: './N2.component.html',
-  styleUrls: ['./N2.component.scss']
+  styleUrls: ['../services.css']
 })
 export class N2Component {
   neededCourses: any;

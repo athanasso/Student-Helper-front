@@ -6,7 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-Peir',
   templateUrl: './Peir.component.html',
-  styleUrls: ['./Peir.component.scss']
+  styleUrls: ['../services.css']
 })
 export class PeirComponent {
   neededCourses: any;

@@ -65,8 +65,8 @@ table tr:hover {
 p {
   margin-top: 20px;
   font-weight: bold;
-  // border: 1px solid #ddd;
-  // padding: 10px;
+   /* border: 1px solid #ddd;
+   padding: 10px; */
 }
 
 mat-card {

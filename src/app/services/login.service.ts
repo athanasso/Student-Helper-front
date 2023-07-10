@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class LoginService {
 
   private readonly logEndPoint = "http://localhost:8080/student_helper/api/student";
+  //private readonly logEndPoint = "https://student-helper-api.vercel.app/student_helper/api/student";
 
   constructor(private http: HttpClient) { }
 
