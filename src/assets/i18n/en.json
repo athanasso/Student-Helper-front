@@ -1,0 +1,73 @@
+{
+  "Home":{
+    "student": "Student Information",
+    "name": "First Name:",
+    "surname": "Last Name:",
+    "department": "Department:",
+    "semester": "Current Semester:",
+    "year": "Registration Year:",
+    "curriculum": "Curriculum:",
+
+    "thesis": "Thesis Information",
+    "title": "Title:",
+    "code": "Code:",
+    "assign": "Assignment Date:",
+    "complete": "Completion Date:",
+    "exame": "Exam Date:",
+    "status": "Status:",
+
+    "deletion": "Your deletion year is:"
+  },
+  "Subjects":{
+    "grades": "Grades",
+    "passed": "Total Passed Courses",
+    "average": "Total Average Grade",
+    "ects": "Total ECTS",
+
+    "search": "Search by...",
+    "name": "Name",
+    "absolute": "Absolute Grade",
+    "decimal": "Decimal Grade",
+    "range": "Range Of Grades",
+
+    "course": "Course Name",
+    "grade": "Grade",
+    "id": "Course ID"
+  },
+  "Services":{
+    "shared":{
+      "name": "Course Name",
+      "id": "Course ID",
+      "mandatory": "Mandatory courses needed:",
+      "spec": "Courses you need from Specialisation flow:",
+      "options": "These are your options",
+      "at_least": "At least",
+      "max": "You can pass max",
+      "available": "The below subjects are available",
+      "passed": "You have passed all necessary subjects for diploma",
+      "check": "Check if you need to finish your diploma assingment",
+      "choice1": "Choice courses needed from first choice courses:",
+      "choice2": "Choice courses needed from second choice courses:"
+    },
+    "ice1":{
+      "choice": "Choice courses needed:",
+      "least_one": "We need at least one basic Specialisation flow subject to figure out the subjects",
+      "other": "Choice courses from other Specialisation flow available:",
+      "at_most": "At most",
+      "general": "Choice courses from general subjects taken:"
+    },
+    "n2":{
+      "choice": "Choice courses from other Specialisation Flow taken:"
+    },
+    "peir":{
+      "choice3": "Choice courses needed from third choice courses:"
+    }
+  },
+  "Header":{
+    "helper": "Student Helper",
+    "home": "Home",
+    "subjects": "Subjects",
+    "services": "Services",
+    "sign": "Sign Out"
+  }
+}

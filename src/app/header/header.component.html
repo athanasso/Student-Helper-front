@@ -1,20 +1,26 @@
 <nav *ngIf="currentRoute !== '/login'" class="navbar navbar-expand-md navbar-light">
-  <a class="navbar-brand" routerLink="home">Student Helper</a>
+  <a class="navbar-brand" routerLink="home">{{'Header.helper' | translate}}</a>
   <button class="navbar-toggler" (click)="toggleMenu()" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content-center" [ngClass]="{'show': showMenu}" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
+        <a class="nav-link" routerLink="home" routerLinkActive="active">{{'Header.home' | translate}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="subjects" routerLinkActive="active">Subjects</a>
+        <a class="nav-link" routerLink="subjects" routerLinkActive="active">{{'Header.subjects' | translate}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="services" routerLinkActive="active">Services</a>
+        <a class="nav-link" routerLink="services" routerLinkActive="active">{{'Header.services' | translate}}</a>
       </li>
     </ul>
-    <button class="btn btn-danger" (click)="signOut()">Sign Out</button>
+    <div class="switch">
+      <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" (change)="switchLanguage($event)">
+      <label for="language-toggle"></label>
+      <span class="on">ΕΛ</span>
+      <span class="off">EN</span>
+    </div>
+    <button class="btn btn-danger" (click)="signOut()">{{'Header.sign' | translate}}</button>
   </div>
 </nav>

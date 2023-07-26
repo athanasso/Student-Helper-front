@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Course } from './../../services/user.service';
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -13,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./subjects.component.scss']
 })
 export class SubjectsComponent {
-  constructor(private userService: UserService, private fb: FormBuilder){}
+  constructor(private userService: UserService, private fb: FormBuilder, public translateService: TranslateService){}
 
   grades: any;
   @ViewChild('paginator') paginator!: MatPaginator;

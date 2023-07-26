@@ -1,11 +1,11 @@
 <div *ngIf="grades">
-  <h2>Grades</h2>
+  <h2>{{'Subjects.grades' | translate}}</h2>
   <table class="s-table">
     <thead>
       <tr>
-        <th>Total Passed Courses</th>
-        <th>Total Average Grade</th>
-        <th>Total ECTS</th>
+        <th>{{'Subjects.passed' | translate}}</th>
+        <th>{{'Subjects.average' | translate}}</th>
+        <th>{{'Subjects.ects' | translate}}</th>
       </tr>
     </thead>
     <tbody>
@@ -23,17 +23,17 @@
           <input matInput type="text" class="form-control" formControlName="searchQuery" placeholder="Enter grade range as min-max (e.g., 5-6)">
         </ng-container>
         <ng-template #input>
-          <input matInput type="text" class="form-control" formControlName="searchQuery" placeholder="Search By...">
+          <input matInput type="text" class="form-control" formControlName="searchQuery" [placeholder]="translateService.instant('Subjects.search')">
         </ng-template>
       </mat-form-field>
     </div>
     <div class="select-container">
       <mat-form-field [formGroup]="searchForm" appearance="fill">
         <select matNativeControl formControlName="searchType" class="search-select">
-          <option value="name">Name</option>
-          <option value="grade1">Absolute Grade</option>
-          <option value="grade2">Decimal Grade</option>
-          <option value="grade3">Range Of Grades</option>
+          <option value="name">{{'Subjects.name' | translate}}</option>
+          <option value="grade1">{{'Subjects.absolute' | translate}}</option>
+          <option value="grade2">{{'Subjects.decimal' | translate}}</option>
+          <option value="grade3">{{'Subjects.range' | translate}}</option>
           <option value="id">ID</option>
         </select>
       </mat-form-field>
@@ -42,19 +42,19 @@
   <table mat-table [dataSource]="filteredResponse" class="table" matSort>
     <!-- Course Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">Course Name </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">{{'Subjects.course' | translate}}</th>
       <td mat-cell *matCellDef="let course">{{ course.name }}</td>
     </ng-container>
 
     <!-- Course Grade Column -->
     <ng-container matColumnDef="grade">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by grade">Grade</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by grade">{{'Subjects.grade' | translate}}</th>
       <td mat-cell *matCellDef="let course">{{ course.grade }}</td>
     </ng-container>
 
     <!-- Course ID Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Course ID</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">{{'Subjects.id' | translate}}</th>
       <td mat-cell *matCellDef="let course">{{ course.id }}</td>
     </ng-container>
 

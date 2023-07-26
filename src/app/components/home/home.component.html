@@ -1,27 +1,27 @@
 <div class="student-info">
-  <h2>Student Information</h2>
+  <h2>{{'Home.student' | translate}}</h2>
   <ul>
     <li><strong>AM:</strong> {{ user .info.am }}</li>
-    <li><strong>First Name:</strong> {{ user.info.firstName }}</li>
-    <li><strong>Last Name:</strong> {{ user.info.lastName }}</li>
-    <li><strong>Department:</strong> {{ user.info.department }}</li>
-    <li><strong>Current Semester:</strong> {{ user.info.currentSemester }}</li>
-    <li><strong>Registration Year:</strong> {{ user.info.registrationYear }}</li>
-    <li><strong>Curriculum:</strong> {{ user.info.curriculum }}</li>
+    <li><strong>{{'Home.name' | translate}}</strong> {{ user.info.firstName}}</li>
+    <li><strong>{{'Home.surname' | translate}}</strong> {{ user.info.lastName }}</li>
+    <li><strong>{{'Home.department' | translate}}</strong> {{ user.info.department }}</li>
+    <li><strong>{{'Home.semester' | translate}}</strong> {{ user.info.currentSemester }}</li>
+    <li><strong>{{'Home.year' | translate}}</strong> {{ user.info.registrationYear }}</li>
+    <li><strong>{{'Home.curriculum' | translate}}</strong> {{ user.info.curriculum }}</li>
   </ul>
 </div>
 <div class="student-info" *ngIf="user.info.thesis.code!=''">
-  <h2>Thesis Information</h2>
+  <h2>{{'Home.thesis' | translate}}</h2>
   <ul>
-    <li><strong>Title:</strong> {{ user.info.thesis.title }}</li>
-    <li><strong>Code:</strong> {{ user.info.thesis.code }}</li>
-    <li><strong>Assignment Date:</strong> {{ user.info.thesis.assignmentDate }}</li>
-    <li><strong>Completion Date:</strong> {{ user.info.thesis.completionDate }}</li>
-    <li><strong>Exam Date:</strong> {{ user.info.thesis.examDate }}</li>
-    <li><strong>Status:</strong> {{ user.info.thesis.status }}</li>
+    <li><strong>{{'Home.title' | translate}}</strong> {{ user.info.thesis.title }}</li>
+    <li><strong>{{'Home.code' | translate}}</strong> {{ user.info.thesis.code }}</li>
+    <li><strong>{{'Home.assign' | translate}}</strong> {{ user.info.thesis.assignmentDate }}</li>
+    <li><strong>{{'Home.complete' | translate}}</strong> {{ user.info.thesis.completionDate }}</li>
+    <li><strong>{{'Home.exam' | translate}}</strong> {{ user.info.thesis.examDate }}</li>
+    <li><strong>{{'Home.status' | translate}}</strong> {{ user.info.thesis.status }}</li>
   </ul>
 </div>
 <mat-card>
-  <mat-card-title>Your deletion year is:</mat-card-title>
+  <mat-card-title>{{'Home.deletion' | translate}}</mat-card-title>
   <mat-card-content>{{ user.info.deletionYear }}</mat-card-content>
 </mat-card>
