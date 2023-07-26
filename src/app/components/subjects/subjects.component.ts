@@ -70,9 +70,11 @@ export class SubjectsComponent {
   }
 
   ngAfterViewInit() {
-    this.sort.sort(({ id: 'id', start: 'asc' }) as MatSortable);
-    this.filteredResponse.paginator = this.paginator;
-    this.filteredResponse.sort = this.sort;
+    setTimeout(() => {
+      this.sort.sort(({ id: 'id', start: 'asc' }) as MatSortable);
+      this.filteredResponse.paginator = this.paginator;
+      this.filteredResponse.sort = this.sort;
+    });
   }
 
   pageSize = 10;
