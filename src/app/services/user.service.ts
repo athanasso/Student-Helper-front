@@ -23,6 +23,7 @@ export class UserService {
     localStorage.removeItem('user');
     this.clearLocalStorageDeletion(); // Clear scheduled local storage deletion
     this.router.navigate(['login']);
+    localStorage.clear();
   }
 
   isLoggedIn(): boolean {

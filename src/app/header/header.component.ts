@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HeaderComponent {
 
+  isGreek!:boolean;
   showMenu:boolean = false;
 
   toggleMenu() {
@@ -20,7 +21,7 @@ export class HeaderComponent {
   constructor(private router: Router, private service: UserService, private translateService: TranslateService, private http: HttpClient) {
     this.translateService.setDefaultLang('el');
     this.translateService.use('el'); // Load translations for the default language
-
+    localStorage.setItem('preferredLanguage','el');
     // Load additional translation files
     this.loadTranslation('en');
     this.loadTranslation('el');
@@ -38,14 +39,21 @@ export class HeaderComponent {
   }
 
   switchLanguage(event: Event): void {
-    const isChecked = (event.target as HTMLInputElement).checked;
-    const selectedLanguage = isChecked ? 'en' : 'el';
-    this.translateService.use(selectedLanguage);
+    const isChecked = !((event.target as HTMLInputElement).checked);
+
+    localStorage.setItem('preferredLanguage', isChecked ? 'el' : 'en');
+
+    this.translateService.use(isChecked ? 'el' : 'en');
   }
 
   currentRoute!: string;
 
   ngOnInit() {
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+
+    this.isGreek = savedLanguage === 'el';
+    this.translateService.use(savedLanguage || 'el');
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentRoute = event.url;
