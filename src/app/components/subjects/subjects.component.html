@@ -20,7 +20,7 @@
     <div class="input-container">
       <mat-form-field [formGroup]="searchForm" appearance="fill">
         <ng-container *ngIf="searchForm.get('searchType')!.value === 'grade3'; else input">
-          <input matInput type="text" class="form-control" formControlName="searchQuery" placeholder="Enter grade range as min-max (e.g., 5-6)">
+          <input matInput type="text" class="form-control" formControlName="searchQuery" [placeholder]="translateService.instant('Subjects.enter')">
         </ng-container>
         <ng-template #input>
           <input matInput type="text" class="form-control" formControlName="searchQuery" [placeholder]="translateService.instant('Subjects.search')">

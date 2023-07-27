@@ -3,7 +3,7 @@ import { Course } from './../../services/user.service';
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSort, MatSortable, Sort } from '@angular/material/sort';
+import { MatSort, MatSortable } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
@@ -25,6 +25,10 @@ export class SubjectsComponent {
   searchSubscription!: Subscription;
 
   ngOnInit(): void {
+    this.translateService.onLangChange.subscribe(() => {
+      this.paginator._intl.itemsPerPageLabel = this.translateService.instant('Subjects.subjects');
+    });
+
     let user = this.userService.getUser();
     this.grades = user.grades;
     this.dataSource = new MatTableDataSource(this.grades.courses);
