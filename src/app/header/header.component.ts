@@ -11,8 +11,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HeaderComponent {
 
-  isGreek!:boolean;
   showMenu:boolean = false;
+  isEnglish: boolean = false;
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
@@ -20,9 +20,8 @@ export class HeaderComponent {
 
   constructor(private router: Router, private service: UserService, private translateService: TranslateService, private http: HttpClient) {
     this.translateService.setDefaultLang('el');
-    this.translateService.use('el'); // Load translations for the default language
-    localStorage.setItem('preferredLanguage','el');
-    // Load additional translation files
+    this.translateService.use('el');
+
     this.loadTranslation('en');
     this.loadTranslation('el');
   }
@@ -38,21 +37,29 @@ export class HeaderComponent {
     );
   }
 
-  switchLanguage(event: Event): void {
-    const isChecked = !((event.target as HTMLInputElement).checked);
+  switchLanguage(): void {
+    let language = localStorage.getItem('preferredLanguage' || 'el');
+    language = language === 'el' ? 'en' : 'el';
+    localStorage.setItem('preferredLanguage', String(language));
 
-    localStorage.setItem('preferredLanguage', isChecked ? 'el' : 'en');
+    this.translateService.use(String(language));
 
-    this.translateService.use(isChecked ? 'el' : 'en');
+    let flag = localStorage.getItem('flag');
+    this.isEnglish = flag == 'true';
+    flag = String(!this.isEnglish);
+    localStorage.setItem('flag', String(flag));
   }
 
   currentRoute!: string;
 
   ngOnInit() {
-    const savedLanguage = localStorage.getItem('preferredLanguage');
+    const language = localStorage.getItem('preferredLanguage');
+    const flag = localStorage.getItem('flag');
 
-    this.isGreek = savedLanguage === 'el';
-    this.translateService.use(savedLanguage || 'el');
+    this.translateService.use(language || 'el');
+    this.isEnglish = Boolean(flag || false);
+    localStorage.setItem('preferredLanguage', language || 'el')
+    localStorage.setItem('flag', flag || 'false')
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
