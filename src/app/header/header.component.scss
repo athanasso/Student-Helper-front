@@ -31,95 +31,11 @@
   margin-left: 1rem;
 }
 
-/* Reset styles for the switch */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 24px;
-}
-
-/* Hide the default checkbox */
-.switch input {
-  display: none;
-}
-
-/* Style the label to represent the toggle button */
-.switch label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50px;
-  height: 24px;
-  background-color: #ccc;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-/* Style the toggled-on state of the switch */
-.switch label::before {
-  content: "EL"; /* Display "EL" by default */
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  border-radius: 50%;
-  transition: transform 0.2s;
-  text-align: center;
-  line-height: 20px;
-  font-size: 10px;
-}
-
-/* Style the language labels */
-.switch .on,
-.switch .off {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.lang {
+  background-color: #6158db;
   color: #fff;
-  font-size: 10px;
-  font-weight: bold;
-  padding: 0 4px;
-}
-
-.switch .on {
-  left: 3px;
-}
-
-.switch .off {
-  right: 3px;
-}
-
-/* Adjust the switch appearance based on the state of the checkbox */
-.switch input:checked + label {
-  background-color: #3217c9; /* Toggle button color when active (color) */
-}
-
-.switch input:checked + label::before {
-  content: "EN"; /* Display "EN" when toggled */
-  transform: translateX(26px); /* Move the toggle button to the right when active */
-}
-
-/* Add some visual effect for hover */
-.switch label:hover {
-  background-color: #bfbfbf;
-}
-
-/* Additional styles for the label and span elements to improve accessibility */
-.switch label,
-.switch .on,
-.switch .off {
-  line-height: 24px;
-  text-align: center;
-}
-
-.switch label {
-  z-index: 2;
-}
-
-.switch .on,
-.switch .off {
-  z-index: 1;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
 }

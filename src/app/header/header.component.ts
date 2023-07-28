@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class HeaderComponent {
 
   showMenu:boolean = false;
-  isEnglish: boolean = false;
+  currentLang = 'EL';
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
@@ -43,23 +43,21 @@ export class HeaderComponent {
     localStorage.setItem('preferredLanguage', String(language));
 
     this.translateService.use(String(language));
-
-    let flag = localStorage.getItem('flag');
-    this.isEnglish = flag == 'true';
-    flag = String(!this.isEnglish);
-    localStorage.setItem('flag', String(flag));
+    this.currentLang = language.toUpperCase();
   }
 
   currentRoute!: string;
 
   ngOnInit() {
     const language = localStorage.getItem('preferredLanguage');
-    const flag = localStorage.getItem('flag');
 
     this.translateService.use(language || 'el');
-    this.isEnglish = Boolean(flag || false);
+
     localStorage.setItem('preferredLanguage', language || 'el')
-    localStorage.setItem('flag', flag || 'false')
+    if (language) {
+      this.currentLang = language.toUpperCase();
+    }
+
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
