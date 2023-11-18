@@ -41,7 +41,7 @@
     "shared":{
       "name": "Course Name",
       "id": "Course ID",
-      "mandatory": "Mandatory courses needed:",
+      "mandatory": "Mandatory courses remaining:",
       "spec": "Courses you need from Specialisation flow:",
       "options": "These are your options",
       "at_least": "At least",
@@ -53,11 +53,16 @@
       "choice2": "Choice courses needed from second choice courses:"
     },
     "ice1":{
-      "choice": "Choice courses needed:",
-      "least_one": "We need at least one basic Specialisation flow subject to figure out the subjects",
+      "select": "Choose specialisation flow",
+      "software": "Software and Information Systems",
+      "hardware": "Hardware and Computer Systems",
+      "network": "Computer and Communication Networks",
+      "basic": "Basic flow courses you need",
+      "same": "Choice courses from the same flow you have passed",
       "other": "Choice courses from other Specialisation flow available:",
       "at_most": "At most",
-      "general": "Choice courses from general subjects taken:"
+      "general": "Choice courses from general subjects taken:",
+      "need": "You need"
     },
     "n2":{
       "choice": "Choice courses from other Specialisation Flow taken:"
