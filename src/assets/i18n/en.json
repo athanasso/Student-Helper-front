@@ -53,14 +53,15 @@
       "choice2": "Choice courses needed from second choice courses:"
     },
     "ice1":{
+      "passed": "Choice courses you have passed",
       "select": "Choose specialisation flow",
       "software": "Software and Information Systems",
       "hardware": "Hardware and Computer Systems",
       "network": "Computer and Communication Networks",
       "basic": "Basic flow courses you need",
       "same": "Choice courses from the same flow you have passed",
-      "other": "Choice courses from other Specialisation flow available:",
-      "at_most": "At most",
+      "other": "Choice courses from other flow you have passed",
+      "at_most": "You can at most",
       "general": "Choice courses from general subjects taken:",
       "need": "You need"
     },
