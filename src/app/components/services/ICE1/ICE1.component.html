@@ -20,7 +20,7 @@
     </mat-paginator>
   </div>
 
-  <div style="border-bottom: 1px solid #ccc; margin: 10px 0;"></div>
+  <div class="line"></div>
 
   <div *ngIf="neededCourses.choiceCoursesPassedForSoftware<16 && neededCourses.choiceCoursesPassedForHardware<16 && neededCourses.choiceCoursesPassedForNetwork<16">
     <label>{{ 'Services.ice1.select' | translate }}</label>
@@ -32,7 +32,12 @@
     </select>
   </div>
 
-  <div [hidden]="selectedOption !== 'software'">
+  <div [hidden]="selectedOption !== 'software'" *ngIf="neededCourses.choiceCoursesPassedForSoftware>=12 && neededCourses.basicCoursesNeededForSoftware<=0">
+    <mat-card>
+      <mat-card-title>{{'Services.ice1.passed_flow' | translate}}</mat-card-title>
+    </mat-card>
+  </div>
+  <div [hidden]="selectedOption !== 'software'" *ngIf="neededCourses.choiceCoursesPassedForSoftware<12 && neededCourses.basicCoursesNeededForSoftware>0">
     <p>{{'Services.ice1.passed' | translate}} : {{ neededCourses.choiceCoursesPassedForSoftware }} </p>
     <p><span style="color: red;">{{'Services.ice1.need' | translate}} 16</span></p>
     <div *ngIf="neededCourses.basicCoursesNeededForSoftware > 0">
@@ -53,7 +58,7 @@
       </table>
     </div>
 
-    <div style="border-bottom: 1px solid #ccc; margin: 10px 0;"></div>
+    <div class="line"></div>
 
     <p>{{'Services.ice1.same' | translate}} : {{ neededCourses.choiceCoursesFromSameBasicPassedForSoftware }} </p>
     <p>{{'Services.ice1.need' | translate}} <span style="color: red;">{{'Services.shared.at_least' | translate}}
@@ -79,7 +84,7 @@
     </mat-paginator>
 
     <div *ngIf="neededCourses.choiceCoursesFromOtherBasicAvailableForSoftware > 0">
-      <div style="border-bottom: 1px solid #ccc; margin: 10px 0;"></div>
+      <div class="line"></div>
       <p>{{'Services.ice1.other' | translate}} {{ neededCourses.choiceCoursesFromOtherBasicAvailableForSoftware }} <span
           style="color: red;">(*{{'Services.ice1.at_most' | translate}} 7*)</span></p>
       <p>{{'Services.shared.options' | translate}}</p>
@@ -104,7 +109,12 @@
     </div>
   </div>
 
-  <div [hidden]="selectedOption !== 'hardware'">
+  <div [hidden]="selectedOption !== 'hardware'" *ngIf="neededCourses.choiceCoursesPassedForHardware>=12 && neededCourses.basicCoursesNeededForHardware<=0">
+    <mat-card>
+      <mat-card-title>{{'Services.ice1.passed_flow' | translate}}</mat-card-title>
+    </mat-card>
+  </div>
+  <div [hidden]="selectedOption !== 'hardware'" *ngIf="neededCourses.choiceCoursesPassedForHardware<12 && neededCourses.basicCoursesNeededForHardware>0">
     <p>{{'Services.ice1.passed' | translate}} : {{ neededCourses.choiceCoursesPassedForHardware }} </p>
     <p><span style="color: red;">{{'Services.ice1.need' | translate}} 16</span></p>
     <div *ngIf="neededCourses.basicCoursesNeededForHardware > 0">
@@ -125,7 +135,7 @@
       </table>
     </div>
 
-    <div style="border-bottom: 1px solid #ccc; margin: 10px 0;"></div>
+    <div class="line"></div>
 
     <p>{{'Services.ice1.same' | translate}} : {{ neededCourses.choiceCoursesFromSameBasicPassedForHardware }} </p>
     <p>{{'Services.ice1.need' | translate}} <span style="color: red;">{{'Services.shared.at_least' | translate}}
@@ -151,7 +161,7 @@
     </mat-paginator>
 
     <div *ngIf="neededCourses.choiceCoursesFromOtherBasicAvailableForHardware > 0">
-      <div style="border-bottom: 1px solid #ccc; margin: 10px 0;"></div>
+      <div class="line"></div>
       <p>{{'Services.ice1.other' | translate}} {{ neededCourses.choiceCoursesFromOtherBasicAvailableForHardware }} <span
           style="color: red;">(*{{'Services.ice1.at_most' | translate}} 7*)</span></p>
       <p>{{'Services.shared.options' | translate}}</p>
@@ -176,7 +186,12 @@
     </div>
   </div>
 
-  <div [hidden]="selectedOption !== 'network'">
+  <div [hidden]="selectedOption !== 'network'" *ngIf="neededCourses.choiceCoursesPassedForNetwork>=12 && neededCourses.basicCoursesNeededForNetwork<=0">
+    <mat-card>
+      <mat-card-title>{{'Services.ice1.passed_flow' | translate}}</mat-card-title>
+    </mat-card>
+  </div>
+  <div [hidden]="selectedOption !== 'network'" *ngIf="neededCourses.choiceCoursesPassedForNetwork<12 && neededCourses.basicCoursesNeededForNetwork>0">
     <p>{{'Services.ice1.passed' | translate}} : {{ neededCourses.choiceCoursesPassedForNetwork }} </p>
     <p><span style="color: red;">{{'Services.ice1.need' | translate}} 16</span></p>
     <div *ngIf="neededCourses.basicCoursesNeededForNetwork > 0">
@@ -197,7 +212,7 @@
       </table>
     </div>
 
-    <div style="border-bottom: 1px solid #ccc; margin: 10px 0;"></div>
+    <div class="line"></div>
 
     <p>{{'Services.ice1.same' | translate}} : {{ neededCourses.choiceCoursesFromSameBasicPassedForNetwork }} </p>
     <p>{{'Services.ice1.need' | translate}} <span style="color: red;">{{'Services.shared.at_least' | translate}}
@@ -223,7 +238,7 @@
     </mat-paginator>
 
     <div *ngIf="neededCourses.choiceCoursesFromOtherBasicAvailableForNetwork > 0">
-      <div style="border-bottom: 1px solid #ccc; margin: 10px 0;"></div>
+      <div class="line"></div>
       <p>{{'Services.ice1.other' | translate}} {{ neededCourses.choiceCoursesFromOtherBasicAvailableForNetwork }} <span
           style="color: red;">(*{{'Services.ice1.at_most' | translate}} 7*)</span></p>
       <p>{{'Services.shared.options' | translate}}</p>
@@ -248,7 +263,7 @@
     </div>
   </div>
 
-  <div style="border-bottom: 1px solid #ccc; margin: 10px 0;"></div>
+  <div class="line"></div>
 
   <div *ngIf="neededCourses.generalCoursesPassed < 2 ">
     <p>{{'Services.ice1.general' | translate}} {{ neededCourses.generalCoursesPassed }}</p>

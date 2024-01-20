@@ -63,7 +63,8 @@
       "other": "Choice courses from other flow you have passed",
       "at_most": "You can at most",
       "general": "Choice courses from general subjects taken:",
-      "need": "You need"
+      "need": "You need",
+      "passed_flow": "You have passed all needed courses for this flow"
     },
     "n2":{
       "choice": "Choice courses from other Specialisation Flow taken:"
