@@ -53,7 +53,7 @@
       "choice2": "Choice courses needed from second choice courses:"
     },
     "ice1":{
-      "passed": "Choice courses you have passed",
+      "passed": "Choice courses you have passed in total",
       "select": "Choose specialisation flow",
       "software": "Software and Information Systems",
       "hardware": "Hardware and Computer Systems",
