@@ -117,3 +117,59 @@ mat-card-content {
   border-bottom: 1px solid #ccc;
   margin: 10px 0;
 }
+
+.grid-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-side {
+  width: 45%; /* Adjust the width as needed */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.right-side {
+  width: 45%; /* Adjust the width as needed */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Add additional styling as needed for your tables, select dropdown, etc. */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.line {
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+}
+
+.select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+}
+
+/* Add styling for the mat-card and other Angular Material components */
+mat-card {
+  margin-top: 20px;
+}
+
+/* Add styling for paginator if needed */
+mat-paginator {
+  margin-top: 10px;
+}
+
