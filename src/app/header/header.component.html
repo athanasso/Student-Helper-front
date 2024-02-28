@@ -1,4 +1,4 @@
-<nav *ngIf="currentRoute !== '/login'" class="navbar navbar-expand-md navbar-light">
+<nav *ngIf="currentRoute !== '/login' && currentRoute !== '/import'" class="navbar navbar-expand-md navbar-light">
   <a class="navbar-brand" routerLink="home">{{'Header.helper' | translate}}</a>
   <button class="navbar-toggler" (click)="toggleMenu()" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
