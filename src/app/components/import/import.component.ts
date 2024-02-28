@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ImportService } from 'src/app/services/import.service';
 import { UserService } from 'src/app/services/user.service';
-import * as XLSX from 'xlsx';
-
+import readXlsxFile from 'read-excel-file';
 @Component({
   selector: 'app-import',
   templateUrl: './import.component.html',
@@ -32,41 +31,41 @@ export class ImportComponent {
 
     if (target.files.length !== 1) throw new Error('Cannot use multiple files');
 
-    const reader: FileReader = new FileReader();
-    reader.onload = (e: any) => {
-      const bstr: string = e.target.result;
-      const workbook: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
+    const file = target.files[0];
 
-      const sheetName: string = workbook.SheetNames[0];
-      const worksheet: XLSX.WorkSheet = workbook.Sheets[sheetName];
+    readXlsxFile(file).then((rows) => {
+      // Iterate through each row starting from the third row (index 2)
+      for (let i = 2; i < rows.length; i++) {
+        const row = rows[i];
 
-      // Iterate through rows starting from the third row
-      if (worksheet['!ref'] !== undefined) {
-        for (let i = 2; i < XLSX.utils.decode_range(worksheet['!ref']).e.r; i++) {
-          const id: string = worksheet[XLSX.utils.encode_cell({ r: i, c: 0 })]?.v || '';
-          const name: string = worksheet[XLSX.utils.encode_cell({ r: i, c: 1 })]?.v || '';
-          let grade: number = worksheet[XLSX.utils.encode_cell({ r: i, c: 2 })]?.v || 0;
-          const ects: number = worksheet[XLSX.utils.encode_cell({ r: i, c: 11 })]?.v || 0;
+        // Extracting data from each row
+        const id: string = row[0]?.toString() || '';
+        const name: string = row[1]?.toString() || '';
+        let grade: number = Number(row[2]) || 0;
+        const ects: number = Number(row[11]) || 0;
 
-          // Adjust the grade if it's greater than 10 (assuming it shouldn't exceed 10)
-          if (grade > 10) {
-            grade = grade / 10; // Convert to a decimal value
-          }
-
-          // Transform data into JSON format
-          const course  = {
-            id: id,
-            name: name,
-            grade: grade,
-            ects: ects
-          };
-
-          this.courses.push(course);
+        // Adjust the grade if it's greater than 10 (assuming it shouldn't exceed 10)
+        if (grade > 10) {
+          grade = grade / 10; // Convert to a decimal value
         }
-        this.fileUploaded = true;
+
+        // Transform data into JSON format
+        const course = {
+          id: id,
+          name: name,
+          grade: grade,
+          ects: ects
+        };
+
+        // Add the course to the courses array
+        this.courses.push(course);
       }
-    };
-    reader.readAsBinaryString(target.files[0]);
+
+      // Mark file upload as completed
+      this.fileUploaded = true;
+    }).catch((error) => {
+      console.error('Error reading Excel file:', error);
+    });
   }
 
   isFormValid(): boolean {
