@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
 
-  private readonly logEndPoint = "http://localhost:8080/student_helper/api/student";
+  private readonly logEndPoint = "http://localhost:8080/student_helper/api/student/login";
 
   constructor(private http: HttpClient) { }
 
@@ -15,6 +15,6 @@ export class LoginService {
     .set('Content-Type', 'application/json');
 
     const data = {"username": username, "password": password};
-    return this.http.post(this.logEndPoint, data);
+    return this.http.post(this.logEndPoint, data,  { headers: headers });
   }
 }
