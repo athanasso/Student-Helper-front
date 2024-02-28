@@ -24,7 +24,7 @@
     </div>
 
     <div class="right-side">
-      <div *ngIf="neededCourses.choiceCoursesPassedForSoftware<16 && neededCourses.choiceCoursesPassedForHardware<16 && neededCourses.choiceCoursesPassedForNetwork<16">
+      <div>
         <label>{{ 'Services.ice1.select' | translate }}</label>
         <select [(ngModel)]="selectedOption" class="select">
           <option value=""></option>
@@ -265,9 +265,8 @@
         </div>
       </div>
 
-      <div class="line"></div>
-
       <div *ngIf="neededCourses.generalCoursesPassed < 2 ">
+        <div class="line"></div>
         <p>{{'Services.ice1.general' | translate}} {{ neededCourses.generalCoursesPassed }}</p>
         <p style="color: red;">*{{'Services.shared.max' | translate}} 2*</p>
         <p>{{'Services.shared.available' | translate}}</p>
