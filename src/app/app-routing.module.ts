@@ -13,11 +13,13 @@ import { ICE1Guard } from './guards/curriculum/ice1.guard';
 import { N2Guard } from './guards/curriculum/n2.guard';
 import { N1Guard } from './guards/curriculum/n1.gaurd';
 import { PeirGuard } from './guards/curriculum/peir.guard';
+import { ImportComponent } from './components/import/import.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'import', component: ImportComponent },
   { path: 'subjects', component: SubjectsComponent, canActivate: [AuthGuard]},
   { path: 'services', component: ServicesComponent, canActivate: [AuthGuard]},
   { path: 'services/ICE1', component: ICE1Component, canActivate: [AuthGuard, ICE1Guard]},

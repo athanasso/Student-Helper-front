@@ -23,6 +23,7 @@ import { N2Component } from './components/services/N2/N2.component';
 import { N1Component } from './components/services/N1/N1.component';
 import { PeirComponent } from './components/services/Peir/Peir.component';
 import { ServicesComponent } from './components/services/services.component';
+import { ImportComponent } from './components/import/import.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     N1Component,
     PeirComponent,
     ServicesComponent,
+    ImportComponent,
   ],
   imports: [
     BrowserModule,
