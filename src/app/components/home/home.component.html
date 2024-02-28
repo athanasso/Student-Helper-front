@@ -1,13 +1,13 @@
 <div class="student-info">
   <h2>{{'Home.student' | translate}}</h2>
   <ul>
-    <li><strong>AM:</strong> {{ user .info.am }}</li>
-    <li><strong>{{'Home.name' | translate}}</strong> {{ user.info.firstName}}</li>
-    <li><strong>{{'Home.surname' | translate}}</strong> {{ user.info.lastName }}</li>
-    <li><strong>{{'Home.department' | translate}}</strong> {{ user.info.department }}</li>
-    <li><strong>{{'Home.semester' | translate}}</strong> {{ user.info.currentSemester }}</li>
-    <li><strong>{{'Home.year' | translate}}</strong> {{ user.info.registrationYear }}</li>
-    <li><strong>{{'Home.curriculum' | translate}}</strong> {{ user.info.curriculum }}</li>
+    <li *ngIf="user.info.am"><strong>AM:</strong> {{ user.info.am }}</li>
+    <li *ngIf="user.info.firstName"><strong>{{'Home.name' | translate}}</strong> {{ user.info.firstName}}</li>
+    <li *ngIf="user.info.lastName"><strong>{{'Home.surname' | translate}}</strong> {{ user.info.lastName }}</li>
+    <li *ngIf="user.info.department"><strong>{{'Home.department' | translate}}</strong> {{ user.info.department }}</li>
+    <li *ngIf="user.info.currentSemester"><strong>{{'Home.semester' | translate}}</strong> {{ user.info.currentSemester }}</li>
+    <li *ngIf="user.info.registrationYear"><strong>{{'Home.year' | translate}}</strong> {{ user.info.registrationYear }}</li>
+    <li *ngIf="user.info.curriculum"><strong>{{'Home.curriculum' | translate}}</strong> {{ user.info.curriculum }}</li>
   </ul>
 </div>
 <div class="student-info" *ngIf="user.info.thesis.code!=''">
@@ -21,7 +21,7 @@
     <li><strong>{{'Home.status' | translate}}</strong> {{ user.info.thesis.status }}</li>
   </ul>
 </div>
-<mat-card>
+<mat-card *ngIf="user.info.deletionYear">
   <mat-card-title>{{'Home.deletion' | translate}}</mat-card-title>
   <mat-card-content>{{ user.info.deletionYear }}</mat-card-content>
 </mat-card>
