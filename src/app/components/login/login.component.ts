@@ -53,4 +53,8 @@ export class LoginComponent {
   dismiss() {
     this.snackBar.dismiss();
   }
+
+  switch() {
+    this.router.navigate(['import']);
+  }
 }
