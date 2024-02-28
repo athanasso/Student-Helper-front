@@ -16,6 +16,7 @@ export class ImportComponent {
   registrationYear: string = '';
   fileUploaded: boolean = false;
   courses: any[] = [];
+  error: string = '';
 
   constructor(private router: Router, private formBuilder: FormBuilder, private service: ImportService, private userService: UserService) {}
 
@@ -91,8 +92,7 @@ export class ImportComponent {
           },
           (error) => {
             console.log(error);
-            // this.error = error.statusText;
-            // this.openSnackBar(this.error);
+            this.error = error.statusText;
           }
         );
       }
