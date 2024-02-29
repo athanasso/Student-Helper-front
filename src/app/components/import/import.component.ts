@@ -30,9 +30,21 @@ export class ImportComponent {
   onFileInput(event: any): void {
     const target: DataTransfer = <DataTransfer>(event.target);
 
-    if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+    if (target.files.length !== 1) throw new Error('Please select a file');
 
     const file = target.files[0];
+
+    // Check if the file is an Excel file (xlsx)
+    if (!file.name.endsWith('.xlsx')) {
+      console.error('Please upload a .xlsx file.');
+      this.error = 'Please upload a .xlsx file.';
+      return;
+    }
+
+    // Clear the existing courses array if a second file is uploaded
+    if (this.courses.length > 0) {
+      this.courses = [];
+    }
 
     readXlsxFile(file).then((rows) => {
       // Iterate through each row starting from the third row (index 2)
@@ -66,6 +78,7 @@ export class ImportComponent {
       this.fileUploaded = true;
     }).catch((error) => {
       console.error('Error reading Excel file:', error);
+      this.error = 'Error reading Excel file.';
     });
   }
 
