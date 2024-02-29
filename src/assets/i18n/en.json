@@ -67,6 +67,9 @@
       "passed_flow": "You have passed all needed courses for this flow"
     },
     "n2":{
+      "software": "Software Engineering",
+      "hardware": "Computer Engineering",
+      "network": "Network Engineering",
       "choice": "Choice courses from other Specialisation Flow taken:"
     },
     "peir":{
