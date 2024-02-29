@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImportService {
 
-  private readonly importEndPoint = "http://localhost:8080/student_helper/api/student/import";
+  private readonly importEndPoint = environment.importEndPoint;
 
   constructor(private http: HttpClient) { }
 

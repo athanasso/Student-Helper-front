@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  private readonly logEndPoint = "http://localhost:8080/student_helper/api/student/login";
+  private readonly loginEndpoint = environment.loginEndpoint;
 
   constructor(private http: HttpClient) { }
 
@@ -15,6 +16,6 @@ export class LoginService {
     .set('Content-Type', 'application/json');
 
     const data = {"username": username, "password": password};
-    return this.http.post(this.logEndPoint, data,  { headers: headers });
+    return this.http.post(this.loginEndpoint, data,  { headers: headers });
   }
 }
