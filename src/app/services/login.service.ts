@@ -11,11 +11,13 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  getUser(username: string, password: string){
-    const headers = new HttpHeaders()
-    .set('Content-Type', 'application/json');
+  getUser(username: string, password: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + btoa(username + ':' + password)
+    });
 
-    const data = {"username": username, "password": password};
-    return this.http.post(this.loginEndpoint, data,  { headers: headers });
+    const data = { "username": username, "password": password };
+    return this.http.post(this.loginEndpoint, data, { headers: headers });
   }
 }
