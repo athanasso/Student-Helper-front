@@ -52,7 +52,7 @@ export class ImportComponent {
         const row = rows[i];
 
         // Extracting data from each row
-        const id: string = row[0]?.toString() || '';
+        let id: string = row[0]?.toString() || '';
         const name: string = row[1]?.toString() || '';
         let grade: number = Number(row[2]) || 0;
         const ects: number = Number(row[11]) || 0;
@@ -61,6 +61,8 @@ export class ImportComponent {
         if (grade > 10) {
           grade = grade / 10; // Convert to a decimal value
         }
+
+        id = id.replace(/Ν/g, 'N').replace(/Ρ/g, 'P'); // Replace Greek characters with Latin characters
 
         // Transform data into JSON format
         const course = {
