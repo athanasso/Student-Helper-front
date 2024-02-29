@@ -54,15 +54,18 @@ export class ImportComponent {
         // Extracting data from each row
         let id: string = row[0]?.toString() || '';
         const name: string = row[1]?.toString() || '';
-        let grade: number = Number(row[2]) || 0;
+        let grade: string = row[2]?.toString() || '0'; // Explicitly convert to string
         const ects: number = Number(row[11]) || 0;
 
         // Adjust the grade if it's greater than 10 (assuming it shouldn't exceed 10)
-        if (grade > 10) {
-          grade = grade / 10; // Convert to a decimal value
+        if (Number.parseInt(grade) > 10) {
+          grade = (Number.parseInt(grade) / 10)?.toString(); // Convert to a decimal value
         }
 
         id = id.replace(/Ν/g, 'N').replace(/Ρ/g, 'P'); // Replace Greek characters with Latin characters
+        if (grade === "Επιτυχώς") {
+          grade = "10";
+        }
 
         // Transform data into JSON format
         const course = {
