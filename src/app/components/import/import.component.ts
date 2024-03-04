@@ -14,6 +14,7 @@ export class ImportComponent {
   importForm!: FormGroup;
   curriculum: string = '';
   registrationYear: string = '';
+  flow: string = '';
   fileUploaded: boolean = false;
   courses: any[] = [];
   error: string = '';
@@ -23,6 +24,7 @@ export class ImportComponent {
   ngOnInit(): void {
     this.importForm = this.formBuilder.group({
       curriculum: ['', Validators.required],
+      flow: ['',],
       registrationYear: [''],
     });
   }
@@ -100,6 +102,7 @@ export class ImportComponent {
       const formData = {
         curriculum: this.importForm.value.curriculum,
         registrationYear: this.importForm.value.registrationYear,
+        flow: this.importForm.value.flow,
         courses: this.courses
       };
 

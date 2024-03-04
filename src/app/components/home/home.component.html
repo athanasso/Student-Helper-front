@@ -8,6 +8,7 @@
     <li *ngIf="user.info.currentSemester"><strong>{{'Home.semester' | translate}}</strong> {{ user.info.currentSemester }}</li>
     <li *ngIf="user.info.registrationYear"><strong>{{'Home.year' | translate}}</strong> {{ user.info.registrationYear }}</li>
     <li *ngIf="user.info.curriculum"><strong>{{'Home.curriculum' | translate}}</strong> {{ user.info.curriculum }}</li>
+    <li *ngIf="user.info.flow"><strong>{{'Home.flow' | translate}}</strong> {{ user.info.flow }}</li>
   </ul>
 </div>
 <div class="student-info" *ngIf="user.info.thesis.code!=''">
