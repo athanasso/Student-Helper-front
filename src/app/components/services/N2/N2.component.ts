@@ -11,24 +11,13 @@ import { UserService } from 'src/app/services/user.service';
 export class N2Component {
   neededCourses: any;
   @ViewChild('mandatoryPaginator') mandatoryPaginator!: MatPaginator;
-  @ViewChild('choiceFromSameBasicForSoftwarePaginator') choiceFromSameBasicForSoftwarePaginator!: MatPaginator;
-  @ViewChild('choiceFromOtherBasicForSoftwarePaginator') choiceFromOtherBasicForSoftwarePaginator!: MatPaginator;
-  @ViewChild('choiceFromSameBasicForHardwarePaginator') choiceFromSameBasicForHardwarePaginator!: MatPaginator;
-  @ViewChild('choiceFromOtherBasicForHardwarePaginator') choiceFromOtherBasicForHardwarePaginator!: MatPaginator;
-  @ViewChild('choiceFromSameBasicForNetworkPaginator') choiceFromSameBasicForNetworkPaginator!: MatPaginator;
-  @ViewChild('choiceFromOtherBasicForNetworkPaginator') choiceFromOtherBasicForNetworkPaginator!: MatPaginator;
-  @ViewChild('generalPaginator') generalPaginator!: MatPaginator;
+  @ViewChild('choiceFromSameBasicPaginator') choiceFromSameBasicPaginator!: MatPaginator;
+  @ViewChild('choiceFromOtherBasicPaginator') choiceFromOtherBasicForPaginator!: MatPaginator;
 
   mandatoryCourses!: MatTableDataSource<any>;
-  basicCoursesForSoftware!: MatTableDataSource<any>;
-  choiceCoursesFromSameBasicForSoftware!: MatTableDataSource<any>;
-  choiceCoursesFromOtherBasicForSoftware!: MatTableDataSource<any>;
-  basicCoursesForHardware!: MatTableDataSource<any>;
-  choiceCoursesFromSameBasicForHardware!: MatTableDataSource<any>;
-  choiceCoursesFromOtherBasicForHardware!: MatTableDataSource<any>;
-  basicCoursesForNetwork!: MatTableDataSource<any>;
-  choiceCoursesFromSameBasicForNetwork!: MatTableDataSource<any>;
-  choiceCoursesFromOtherBasicForNetwork!: MatTableDataSource<any>;
+  basicCourses!: MatTableDataSource<any>;
+  choiceCoursesFromSameBasic!: MatTableDataSource<any>;
+  choiceCoursesFromOtherBasic!: MatTableDataSource<any>;
 
   selectedOption!: string;
 
@@ -38,24 +27,14 @@ export class N2Component {
     let user = this.userService.getUser();
     this.neededCourses = user.grades.neededCourses;
     this.mandatoryCourses = new MatTableDataSource(this.neededCourses.mandatoryCoursesLeft);
-    this.basicCoursesForSoftware = new MatTableDataSource(this.neededCourses.basicCoursesLeftForSoftware);
-    this.choiceCoursesFromSameBasicForSoftware = new MatTableDataSource(this.neededCourses.choiceCoursesFromSameBasicLeftForSoftware);
-    this.choiceCoursesFromOtherBasicForSoftware = new MatTableDataSource(this.neededCourses.choiceCoursesFromOtherBasicLeftForSoftware);
-    this.basicCoursesForHardware = new MatTableDataSource(this.neededCourses.basicCoursesLeftForHardware);
-    this.choiceCoursesFromSameBasicForHardware = new MatTableDataSource(this.neededCourses.choiceCoursesFromSameBasicLeftForHardware);
-    this.choiceCoursesFromOtherBasicForHardware = new MatTableDataSource(this.neededCourses.choiceCoursesFromOtherBasicLeftForHardware);
-    this.basicCoursesForNetwork = new MatTableDataSource(this.neededCourses.basicCoursesLeftForNetwork);
-    this.choiceCoursesFromSameBasicForNetwork = new MatTableDataSource(this.neededCourses.choiceCoursesFromSameBasicLeftForNetwork);
-    this.choiceCoursesFromOtherBasicForNetwork = new MatTableDataSource(this.neededCourses.choiceCoursesFromOtherBasicLeftForNetwork);
+    this.basicCourses = new MatTableDataSource(this.neededCourses.basicCoursesLeft);
+    this.choiceCoursesFromSameBasic = new MatTableDataSource(this.neededCourses.choiceCoursesFromSameBasicLeft);
+    this.choiceCoursesFromOtherBasic = new MatTableDataSource(this.neededCourses.choiceCoursesFromOtherBasicLeft);
   }
 
   ngAfterViewInit(){
     this.mandatoryCourses.paginator = this.mandatoryPaginator;
-    this.choiceCoursesFromSameBasicForSoftware.paginator = this.choiceFromSameBasicForSoftwarePaginator;
-    this.choiceCoursesFromOtherBasicForSoftware.paginator = this.choiceFromOtherBasicForSoftwarePaginator;
-    this.choiceCoursesFromSameBasicForHardware.paginator = this.choiceFromSameBasicForHardwarePaginator;
-    this.choiceCoursesFromOtherBasicForHardware.paginator = this.choiceFromOtherBasicForHardwarePaginator;
-    this.choiceCoursesFromSameBasicForNetwork.paginator = this.choiceFromSameBasicForNetworkPaginator;
-    this.choiceCoursesFromOtherBasicForNetwork.paginator = this.choiceFromOtherBasicForNetworkPaginator;
+    this.choiceCoursesFromSameBasic.paginator = this.choiceFromSameBasicPaginator;
+    this.choiceCoursesFromOtherBasic.paginator = this.choiceFromOtherBasicForPaginator;
   }
 }

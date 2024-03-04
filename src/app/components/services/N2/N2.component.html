@@ -24,27 +24,13 @@
     </div>
 
     <div class="right-side">
-      <div>
-        <label>{{ 'Services.ice1.select' | translate }}</label>
-        <select [(ngModel)]="selectedOption" class="select">
-          <option value=""></option>
-          <option value="software">{{ 'Services.n2.software' | translate }}</option>
-          <option value="hardware">{{ 'Services.n2.hardware' | translate }}</option>
-          <option value="network">{{ 'Services.n2.network' | translate }}</option>
-        </select>
-      </div>
 
-      <div [hidden]="selectedOption !== 'software'" *ngIf="neededCourses.choiceCoursesPassedForSoftware>=13 && neededCourses.basicCoursesNeededForSoftware<=0">
-        <mat-card>
-          <mat-card-title>{{'Services.ice1.passed_flow' | translate}}</mat-card-title>
-        </mat-card>
-      </div>
-      <div [hidden]="selectedOption !== 'software'" *ngIf="neededCourses.choiceCoursesPassedForSoftware<13 && neededCourses.basicCoursesNeededForSoftware>0">
-        <p>{{'Services.ice1.passed' | translate}} : {{ neededCourses.choiceCoursesPassedForSoftware }} </p>
-        <p><span style="color: red;">{{'Services.ice1.need' | translate}} 16</span></p>
-        <div *ngIf="neededCourses.basicCoursesNeededForSoftware > 0">
-          <p>{{'Services.ice1.basic' | translate}} : {{ neededCourses.basicCoursesNeededForSoftware }}</p>
-          <table mat-table [dataSource]="basicCoursesForSoftware">
+      <div *ngIf="neededCourses.choiceCoursesPassed<13">
+        <p>{{'Services.ice1.passed' | translate}} : {{ neededCourses.choiceCoursesPassed }} </p>
+        <p><span style="color: red;">{{'Services.ice1.need' | translate}} 13</span></p>
+        <div *ngIf="neededCourses.basicCoursesNeededed > 0">
+          <p>{{'Services.ice1.basic' | translate}} : {{ neededCourses.basicCoursesNeededed }}</p>
+          <table mat-table [dataSource]="basicCourses">
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef>{{'Services.shared.name' | translate}}</th>
               <td mat-cell *matCellDef="let course">{{ course.name }}</td>
@@ -62,11 +48,11 @@
 
         <div class="line"></div>
 
-        <p>{{'Services.ice1.same' | translate}} : {{ neededCourses.choiceCoursesFromSameBasicPassedForSoftware }} </p>
+        <p>{{'Services.ice1.same' | translate}} : {{ neededCourses.choiceCoursesFromSameBasicPassed }} </p>
         <p>{{'Services.ice1.need' | translate}} <span style="color: red;">{{'Services.shared.at_least' | translate}}
             5</span></p>
         <p>{{'Services.shared.options' | translate}}</p>
-        <table mat-table [dataSource]="choiceCoursesFromSameBasicForSoftware">
+        <table mat-table [dataSource]="choiceCoursesFromSameBasic">
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>{{'Services.shared.name' | translate}}</th>
             <td mat-cell *matCellDef="let course">{{ course.name }}</td>
@@ -80,17 +66,17 @@
           <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
           <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
         </table>
-        <mat-paginator #choiceFromSameBasicForSoftwarePaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"
-          [showFirstLastButtons]="true" [length]="neededCourses.choiceCoursesFromSameBasicLeftForSoftware.length"
+        <mat-paginator #choiceFromSameBasicPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"
+          [showFirstLastButtons]="true" [length]="neededCourses.choiceCoursesFromSameBasicLeft.length"
           [pageIndex]="0">
         </mat-paginator>
 
-        <div *ngIf="neededCourses.choiceCoursesFromOtherBasicAvailableForSoftware > 0">
+        <div *ngIf="neededCourses.choiceCoursesFromOtherBasicAvailable > 0">
           <div class="line"></div>
-          <p>{{'Services.ice1.other' | translate}} {{ neededCourses.choiceCoursesFromOtherBasicAvailableForSoftware }} <span
+          <p>{{'Services.ice1.other' | translate}} {{ neededCourses.choiceCoursesFromOtherBasicAvailable }} <span
               style="color: red;">(*{{'Services.ice1.at_most' | translate}} 7*)</span></p>
           <p>{{'Services.shared.options' | translate}}</p>
-          <table mat-table [dataSource]="choiceCoursesFromOtherBasicForSoftware">
+          <table mat-table [dataSource]="choiceCoursesFromOtherBasic">
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef>{{'Services.shared.name' | translate}}</th>
               <td mat-cell *matCellDef="let course">{{ course.name }}</td>
@@ -104,162 +90,8 @@
             <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
             <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
           </table>
-          <mat-paginator #choiceFromOtherBasicForSoftwarePaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"
-            [showFirstLastButtons]="true" [length]="neededCourses.choiceCoursesFromOtherBasicLeftForSoftware.length"
-            [pageIndex]="0">
-          </mat-paginator>
-        </div>
-      </div>
-
-      <div [hidden]="selectedOption !== 'hardware'" *ngIf="neededCourses.choiceCoursesPassedForHardware>=13 && neededCourses.basicCoursesNeededForHardware<=0">
-        <mat-card>
-          <mat-card-title>{{'Services.ice1.passed_flow' | translate}}</mat-card-title>
-        </mat-card>
-      </div>
-      <div [hidden]="selectedOption !== 'hardware'" *ngIf="neededCourses.choiceCoursesPassedForHardware<13 && neededCourses.basicCoursesNeededForHardware>0">
-        <p>{{'Services.ice1.passed' | translate}} : {{ neededCourses.choiceCoursesPassedForHardware }} </p>
-        <p><span style="color: red;">{{'Services.ice1.need' | translate}} 16</span></p>
-        <div *ngIf="neededCourses.basicCoursesNeededForHardware > 0">
-          <p>{{'Services.ice1.basic' | translate}} : {{ neededCourses.basicCoursesNeededForHardware }}</p>
-          <table mat-table [dataSource]="basicCoursesForHardware">
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>{{'Services.shared.name' | translate}}</th>
-              <td mat-cell *matCellDef="let course">{{ course.name }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef>{{'Services.shared.id' | translate}}</th>
-              <td mat-cell *matCellDef="let course">{{ course.id }}</td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
-            <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
-          </table>
-        </div>
-
-        <div class="line"></div>
-
-        <p>{{'Services.ice1.same' | translate}} : {{ neededCourses.choiceCoursesFromSameBasicPassedForHardware }} </p>
-        <p>{{'Services.ice1.need' | translate}} <span style="color: red;">{{'Services.shared.at_least' | translate}}
-            5</span></p>
-        <p>{{'Services.shared.options' | translate}}</p>
-        <table mat-table [dataSource]="choiceCoursesFromSameBasicForHardware">
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>{{'Services.shared.name' | translate}}</th>
-            <td mat-cell *matCellDef="let course">{{ course.name }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef>{{'Services.shared.id' | translate}}</th>
-            <td mat-cell *matCellDef="let course">{{ course.id }}</td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
-          <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
-        </table>
-        <mat-paginator #choiceFromSameBasicForHardwarePaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"
-          [showFirstLastButtons]="true" [length]="neededCourses.choiceCoursesFromSameBasicLeftForHardware.length"
-          [pageIndex]="0">
-        </mat-paginator>
-
-        <div *ngIf="neededCourses.choiceCoursesFromOtherBasicAvailableForHardware > 0">
-          <div class="line"></div>
-          <p>{{'Services.ice1.other' | translate}} {{ neededCourses.choiceCoursesFromOtherBasicAvailableForHardware }} <span
-              style="color: red;">(*{{'Services.ice1.at_most' | translate}} 7*)</span></p>
-          <p>{{'Services.shared.options' | translate}}</p>
-          <table mat-table [dataSource]="choiceCoursesFromOtherBasicForHardware">
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>{{'Services.shared.name' | translate}}</th>
-              <td mat-cell *matCellDef="let course">{{ course.name }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef>{{'Services.shared.id' | translate}}</th>
-              <td mat-cell *matCellDef="let course">{{ course.id }}</td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
-            <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
-          </table>
-          <mat-paginator #choiceFromOtherBasicForHardwarePaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"
-            [showFirstLastButtons]="true" [length]="neededCourses.choiceCoursesFromOtherBasicLeftForHardware.length"
-            [pageIndex]="0">
-          </mat-paginator>
-        </div>
-      </div>
-
-      <div [hidden]="selectedOption !== 'network'" *ngIf="neededCourses.choiceCoursesPassedForNetwork>=13 && neededCourses.basicCoursesNeededForNetwork<=0">
-        <mat-card>
-          <mat-card-title>{{'Services.ice1.passed_flow' | translate}}</mat-card-title>
-        </mat-card>
-      </div>
-      <div [hidden]="selectedOption !== 'network'" *ngIf="neededCourses.choiceCoursesPassedForNetwork<13 && neededCourses.basicCoursesNeededForNetwork>0">
-        <p>{{'Services.ice1.passed' | translate}} : {{ neededCourses.choiceCoursesPassedForNetwork }} </p>
-        <p><span style="color: red;">{{'Services.ice1.need' | translate}} 16</span></p>
-        <div *ngIf="neededCourses.basicCoursesNeededForNetwork > 0">
-          <p>{{'Services.ice1.basic' | translate}} : {{ neededCourses.basicCoursesNeededForNetwork }}</p>
-          <table mat-table [dataSource]="basicCoursesForNetwork">
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>{{'Services.shared.name' | translate}}</th>
-              <td mat-cell *matCellDef="let course">{{ course.name }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef>{{'Services.shared.id' | translate}}</th>
-              <td mat-cell *matCellDef="let course">{{ course.id }}</td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
-            <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
-          </table>
-        </div>
-
-        <div class="line"></div>
-
-        <p>{{'Services.ice1.same' | translate}} : {{ neededCourses.choiceCoursesFromSameBasicPassedForNetwork }} </p>
-        <p>{{'Services.ice1.need' | translate}} <span style="color: red;">{{'Services.shared.at_least' | translate}}
-            5</span></p>
-        <p>{{'Services.shared.options' | translate}}</p>
-        <table mat-table [dataSource]="choiceCoursesFromSameBasicForNetwork">
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>{{'Services.shared.name' | translate}}</th>
-            <td mat-cell *matCellDef="let course">{{ course.name }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef>{{'Services.shared.id' | translate}}</th>
-            <td mat-cell *matCellDef="let course">{{ course.id }}</td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
-          <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
-        </table>
-        <mat-paginator #choiceFromSameBasicForNetworkPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"
-          [showFirstLastButtons]="true" [length]="neededCourses.choiceCoursesFromSameBasicLeftForNetwork.length"
-          [pageIndex]="0">
-        </mat-paginator>
-
-        <div *ngIf="neededCourses.choiceCoursesFromOtherBasicAvailableForNetwork > 0">
-          <div class="line"></div>
-          <p>{{'Services.ice1.other' | translate}} {{ neededCourses.choiceCoursesFromOtherBasicAvailableForNetwork }} <span
-              style="color: red;">(*{{'Services.ice1.at_most' | translate}} 7*)</span></p>
-          <p>{{'Services.shared.options' | translate}}</p>
-          <table mat-table [dataSource]="choiceCoursesFromOtherBasicForNetwork">
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>{{'Services.shared.name' | translate}}</th>
-              <td mat-cell *matCellDef="let course">{{ course.name }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef>{{'Services.shared.id' | translate}}</th>
-              <td mat-cell *matCellDef="let course">{{ course.id }}</td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
-            <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
-          </table>
-          <mat-paginator #choiceFromOtherBasicForNetworkPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"
-            [showFirstLastButtons]="true" [length]="neededCourses.choiceCoursesFromOtherBasicLeftForNetwork.length"
+          <mat-paginator #choiceFromOtherBasicPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"
+            [showFirstLastButtons]="true" [length]="neededCourses.choiceCoursesFromOtherBasicLeft.length"
             [pageIndex]="0">
           </mat-paginator>
         </div>
