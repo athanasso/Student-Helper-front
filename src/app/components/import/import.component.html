@@ -9,6 +9,17 @@
       <option value="Νέο Πρόγραμμα Σπουδών (από 20/9/2010)">Ν1</option>
     </select>
 
+    <div *ngIf="importForm.get('curriculum')?.value==='Υπό Εφαρμογή - Νέο Πρόγραμμα Σπουδών (από 20/9/2014)'">
+      <label for="curriculum">Flow:<span class="text-danger">*</span></label>
+      <select id="flow" name="flow" formControlName="flow">
+        <option value="" disabled>Select Specialization Flow</option>
+        <option value=""></option>
+        <option value="Μηχανικών Λογισμικού">Μηχανικών Λογισμικού</option>
+        <option value="Μηχανικών Η/Υ">Μηχανικών Η/Υ</option>
+        <option value="Μηχανικών Δικτύων">Μηχανικών Δικτύων</option>
+      </select>
+    </div>
+
     <label for="registrationYear">Registration Year:</label>
     <input type="text" id="registrationYear" name="registrationYear" formControlName="registrationYear">
 
