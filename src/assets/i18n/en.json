@@ -50,8 +50,7 @@
       "available": "The below subjects are available",
       "passed": "You have passed all necessary subjects for diploma",
       "check": "Check if you need to finish your diploma assingment",
-      "choice1": "Choice courses needed from first choice courses:",
-      "choice2": "Choice courses needed from second choice courses:"
+      "choice": "Choice courses needed from choice courses:"
     },
     "ice1":{
       "passed": "Choice courses you have passed in total",
@@ -72,9 +71,6 @@
       "hardware": "Computer Engineering",
       "network": "Network Engineering",
       "choice": "Choice courses from other Specialisation Flow taken:"
-    },
-    "peir":{
-      "choice3": "Choice courses needed from third choice courses:"
     }
   },
   "Header":{
