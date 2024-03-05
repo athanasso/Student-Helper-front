@@ -26,7 +26,7 @@
   </div>
 
   <div *ngIf="neededCourses.choiceCoursesNeeded > 0">
-    <p>{{'Services.shared.choice1' | translate}} {{ neededCourses.choiceCoursesNeeded }}</p>
+    <p>{{'Services.shared.choice' | translate}} {{ neededCourses.choiceCoursesNeeded }}</p>
     <table mat-table [dataSource]="choiceCoursesLeft">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>{{'Services.shared.name' | translate}}</th>
