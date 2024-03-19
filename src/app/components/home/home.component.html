@@ -1,14 +1,14 @@
 <div class="student-info">
   <h2>{{'Home.student' | translate}}</h2>
   <ul>
-    <li *ngIf="user.info.am"><strong>AM:</strong> {{ user.info.am }}</li>
-    <li *ngIf="user.info.firstName"><strong>{{'Home.name' | translate}}</strong> {{ user.info.firstName}}</li>
-    <li *ngIf="user.info.lastName"><strong>{{'Home.surname' | translate}}</strong> {{ user.info.lastName }}</li>
-    <li *ngIf="user.info.department"><strong>{{'Home.department' | translate}}</strong> {{ user.info.department }}</li>
-    <li *ngIf="user.info.currentSemester"><strong>{{'Home.semester' | translate}}</strong> {{ user.info.currentSemester }}</li>
-    <li *ngIf="user.info.registrationYear"><strong>{{'Home.year' | translate}}</strong> {{ user.info.registrationYear }}</li>
-    <li *ngIf="user.info.curriculum"><strong>{{'Home.curriculum' | translate}}</strong> {{ user.info.curriculum }}</li>
-    <li *ngIf="user.info.flow"><strong>{{'Home.flow' | translate}}</strong> {{ user.info.flow }}</li>
+    <li *ngIf="user.info.am!='null' && user.info.am!=null && user.info.am"><strong>AM:</strong> {{ user.info.am }}</li>
+    <li *ngIf="user.info.firstName!='null' && user.info.firstName!=null && user.info.firstName"><strong>{{'Home.name' | translate}}</strong> {{ user.info.firstName}}</li>
+    <li *ngIf="user.info.lastName!='null' && user.info.lastName!=null && user.info.lastName"><strong>{{'Home.surname' | translate}}</strong> {{ user.info.lastName }}</li>
+    <li *ngIf="user.info.department!='null' && user.info.department!=null && user.info.department"><strong>{{'Home.department' | translate}}</strong> {{ user.info.department }}</li>
+    <li *ngIf="user.info.currentSemester!=null && user.info.currentSemester"><strong>{{'Home.semester' | translate}}</strong> {{ user.info.currentSemester }}</li>
+    <li *ngIf="user.info.registrationYear!=null && user.info.registrationYear"><strong>{{'Home.year' | translate}}</strong> {{ user.info.registrationYear }}</li>
+    <li *ngIf="user.info.curriculum!='null' && user.info.curriculum!=null && user.info.curriculum"><strong>{{'Home.curriculum' | translate}}</strong> {{ user.info.curriculum }}</li>
+    <li *ngIf="user.info.flow!='null' && user.info.flow!=null && user.info.flow"><strong>{{'Home.flow' | translate}}</strong> {{ user.info.flow }}</li>
   </ul>
 </div>
 <div class="student-info" *ngIf="user.info.thesis.code!=''">
