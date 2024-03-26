@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "student-helper:build:production"
+              "buildTarget": "student-helper:build:production"
             },
             "development": {
-              "browserTarget": "student-helper:build:development"
+              "buildTarget": "student-helper:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "student-helper:build"
+            "buildTarget": "student-helper:build"
           }
         },
         "test": {
