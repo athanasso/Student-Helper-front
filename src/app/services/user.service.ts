@@ -1,17 +1,58 @@
+import { RephreshService } from './rephresh.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription, interval, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private timeoutId: any; // Variable to store the timeout ID
+  private refreshSubscription!: Subscription;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private rephreshService: RephreshService) {}
+
+  startRefreshing(cookies: Cookies) {
+    // Check if the user is logged in
+    if (!cookies || !this.isLoggedIn) return;
+
+    console.log('Refreshing...');
+
+    // Stop any existing refresh subscription
+    this.stopRefreshing();
+
+    // Start a new subscription to periodically refresh
+    this.refreshSubscription = interval(5 * 1000) // 5 minutes interval
+      .pipe(
+        switchMap(() => this.rephreshService.getUser(cookies)),
+        tap((data: any) => {
+          // Check if the received data is valid
+          if (data && data.student) {
+            console.log('Data received:');
+            // Update the user data in local storage
+            localStorage.setItem('user', JSON.stringify(data.student));
+            this.scheduleLocalStorageDeletion(); // Schedule local storage deletion
+          }
+        })
+      )
+      .subscribe();
+}
+
+stopRefreshing() {
+    // Unsubscribe from any existing refresh subscription
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
+    }
+}
 
   setUser(data: any) {
     localStorage.setItem('user', JSON.stringify(data.student));
     this.scheduleLocalStorageDeletion(); // Schedule local storage deletion
+
+    if (data.cookies) {
+      localStorage.setItem('cookies', JSON.stringify(data.cookies));
+      this.startRefreshing(data.cookies);
+    }
   }
 
   getUser() {
@@ -24,6 +65,7 @@ export class UserService {
     this.clearLocalStorageDeletion(); // Clear scheduled local storage deletion
     this.router.navigate(['login']);
     localStorage.clear();
+    this.stopRefreshing();
   }
 
   isLoggedIn(): boolean {
@@ -48,7 +90,8 @@ export class UserService {
 
 export interface User{
   info: Info,
-  grades: Grades
+  grades: Grades,
+  cookies: Cookies
 }
 
 export interface Info{
@@ -85,4 +128,10 @@ export interface Course{
   id: string,
   name: string,
   grade: number
+}
+
+export interface Cookies{
+  cookie: string,
+  xProfile: string,
+  _csrf: string
 }
