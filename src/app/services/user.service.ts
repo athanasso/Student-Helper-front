@@ -22,7 +22,7 @@ export class UserService {
     this.stopRefreshing();
 
     // Start a new subscription to periodically refresh
-    this.refreshSubscription = interval(5 * 1000) // 5 minutes interval
+    this.refreshSubscription = interval(5 * 60 * 1000) // 5 minutes interval
       .pipe(
         switchMap(() => this.rephreshService.getUser(cookies)),
         tap((data: any) => {
