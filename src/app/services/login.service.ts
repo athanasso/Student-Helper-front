@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class LoginService {
 
-  private readonly loginEndpoint = environment.loginEndpoint;
+  private readonly loginEndpoint = environment.loginEndPoint;
 
   constructor(private http: HttpClient) { }
 
