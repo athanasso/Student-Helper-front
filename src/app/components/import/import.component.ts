@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ImportService } from 'src/app/services/import.service';
 import { UserService } from 'src/app/services/user.service';
 import readXlsxFile from 'read-excel-file';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-import',
   templateUrl: './import.component.html',
@@ -19,7 +20,13 @@ export class ImportComponent {
   courses: any[] = [];
   error: string = '';
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private service: ImportService, private userService: UserService) {}
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private service: ImportService,
+    private userService: UserService,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.importForm = this.formBuilder.group({
@@ -32,14 +39,14 @@ export class ImportComponent {
   onFileInput(event: any): void {
     const target: DataTransfer = <DataTransfer>(event.target);
 
-    if (target.files.length !== 1) throw new Error('Please select a file');
+    if (target.files.length !== 1) throw new Error(this.translateService.instant('Import.select_file'));
 
     const file = target.files[0];
 
     // Check if the file is an Excel file (xlsx)
     if (!file.name.endsWith('.xlsx')) {
       console.error('Please upload a .xlsx file.');
-      this.error = 'Please upload a .xlsx file.';
+      this.error = this.translateService.instant('Import.upload_xlsx');
       return;
     }
 
@@ -85,7 +92,7 @@ export class ImportComponent {
       this.fileUploaded = true;
     }).catch((error) => {
       console.error('Error reading Excel file:', error);
-      this.error = 'Error reading Excel file.';
+      this.error = this.translateService.instant('Import.error');
     });
   }
 

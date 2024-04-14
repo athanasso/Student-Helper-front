@@ -79,5 +79,28 @@
     "subjects": "Subjects",
     "services": "Services",
     "sign": "Sign Out"
+  },
+  "Login":{
+    "username": "username",
+    "password": "password",
+    "signIn": "Sign In",
+    "switch": "Import data"
+  },
+  "Import":{
+    "curriculum": "Curriculum",
+    "select": "Select curriculum",
+    "pada": "PADA",
+    "tei": "TEI PEIRAIA",
+    "flow": "Specialisation Flow",
+    "select_flow": "Select Specialisation Flow",
+    "software": "Software Engineering",
+    "hardware": "Computer Engineering ",
+    "network": "Network Engineering",
+    "year": "Registration Year",
+    "submit": "Submit",
+    "switch": "Login with credentials",
+    "select_file": "Please select a file",
+    "upload_xlsx": "Please upload a .xlsx file",
+    "error": "Error reading Excel file"
   }
 }

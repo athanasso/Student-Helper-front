@@ -1,26 +1,27 @@
 <div class="container">
+  <app-translate-button></app-translate-button>
   <form [formGroup]="importForm" (ngSubmit)="onSubmit()">
-    <label for="curriculum">Curriculum:<span class="text-danger">*</span></label>
+    <label for="curriculum">{{'Import.curriculum' | translate}}:<span class="text-danger">*</span></label>
     <select id="curriculum" name="curriculum" formControlName="curriculum" required>
-      <option value="" disabled>Select Curriculum</option>
-      <option value="ΠΡΟΓΡΑΜΜΑ 5 ΕΤΩΝ ΣΠΟΥΔΩΝ (2019)">ΠΑΔΑ</option>
-      <option value="Υπό Εφαρμογή - Νέο Πρόγραμμα Σπουδών (από 20/9/2014)">Ν2</option>
-      <option value="2017 - ΝΕΟ [24]">ΤΕΙ ΠΕΙΡΑΙΑ</option>
-      <option value="Νέο Πρόγραμμα Σπουδών (από 20/9/2010)">Ν1</option>
+      <option value="" disabled>{{'Import.select' | translate}}</option>
+      <option value="ΠΡΟΓΡΑΜΜΑ 5 ΕΤΩΝ ΣΠΟΥΔΩΝ (2019)">{{'Import.pada' | translate}}</option>
+      <option value="Υπό Εφαρμογή - Νέο Πρόγραμμα Σπουδών (από 20/9/2014)">N2</option>
+      <option value="2017 - ΝΕΟ [24]">{{'Import.tei' | translate}}</option>
+      <option value="Νέο Πρόγραμμα Σπουδών (από 20/9/2010)">N1</option>
     </select>
 
     <div *ngIf="importForm.get('curriculum')?.value==='Υπό Εφαρμογή - Νέο Πρόγραμμα Σπουδών (από 20/9/2014)'">
-      <label for="curriculum">Flow:<span class="text-danger">*</span></label>
+      <label for="curriculum">{{'Import.flow' | translate}}:<span class="text-danger">*</span></label>
       <select id="flow" name="flow" formControlName="flow">
-        <option value="" disabled>Select Specialization Flow</option>
+        <option value="" disabled>{{'Import.select_flow' | translate}}</option>
         <option value=""></option>
-        <option value="ΜΗΧΑΝΙΚΩΝ ΛΟΓΙΣΜΙΚΟΥ ΤΕ">Μηχανικών Λογισμικού</option>
-        <option value="ΜΗΧΑΝΙΚΩΝ Η/Υ ΤΕ">Μηχανικών Η/Υ</option>
-        <option value="ΜΗΧΑΝΙΚΩΝ ΔΙΚΤΥΩΝ ΤΕ">Μηχανικών Δικτύων</option>
+        <option value="ΜΗΧΑΝΙΚΩΝ ΛΟΓΙΣΜΙΚΟΥ ΤΕ">{{'Import.software' | translate}}</option>
+        <option value="ΜΗΧΑΝΙΚΩΝ Η/Υ ΤΕ">{{'Import.hardware' | translate}}</option>
+        <option value="ΜΗΧΑΝΙΚΩΝ ΔΙΚΤΥΩΝ ΤΕ">{{'Import.network' | translate}}</option>
       </select>
     </div>
 
-    <label for="registrationYear">Registration Year:</label>
+    <label for="registrationYear">{{'Import.year' | translate}}:</label>
     <input type="text" id="registrationYear" name="registrationYear" formControlName="registrationYear">
 
     <input type="file" (change)="onFileInput($event)" required>
@@ -30,9 +31,8 @@
       {{ error }}
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">{{'Import.submit' | translate}}</button>
   </form>
-
 </div>
 
-<button type="submit" class="btn btn-primary" (click)="switch()">Switch to login</button>
+<button type="submit" class="btn btn-primary" (click)="switch()">{{'Import.switch' | translate}}</button>
