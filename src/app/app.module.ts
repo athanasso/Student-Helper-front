@@ -23,45 +23,47 @@ import { N1Component } from './components/services/N1/N1.component';
 import { PeirComponent } from './components/services/Peir/Peir.component';
 import { ServicesComponent } from './components/services/services.component';
 import { ImportComponent } from './components/import/import.component';
+import { TranslateButtonComponent } from "./buttons/translate-button/translate-button.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent,
-    HeaderComponent,
-    SubjectsComponent,
-    ICE1Component,
-    N2Component,
-    N1Component,
-    PeirComponent,
-    ServicesComponent,
-    ImportComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatSortModule,
-    MatPaginatorModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        HomeComponent,
+        HeaderComponent,
+        SubjectsComponent,
+        ICE1Component,
+        N2Component,
+        N1Component,
+        PeirComponent,
+        ServicesComponent,
+        ImportComponent,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatTableModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatSortModule,
+        MatPaginatorModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        TranslateButtonComponent
+    ]
 })
 export class AppModule { }

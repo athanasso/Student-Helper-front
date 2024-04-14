@@ -15,7 +15,7 @@
         <a class="nav-link" routerLink="services" routerLinkActive="active">{{'Header.services' | translate}}</a>
       </li>
     </ul>
-    <button class="lang" (click)="switchLanguage()">{{currentLang}}</button>
+    <app-translate-button class="lang"></app-translate-button>
     <button class="btn btn-danger" (click)="signOut()">{{'Header.sign' | translate}}</button>
   </div>
 </nav>
