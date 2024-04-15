@@ -1,4 +1,4 @@
-import { RephreshService } from './rephresh.service';
+import { RefreshService } from './refresh.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription, interval, switchMap, tap } from 'rxjs';
@@ -10,7 +10,7 @@ export class UserService {
   private timeoutId: any; // Variable to store the timeout ID
   private refreshSubscription!: Subscription;
 
-  constructor(private router: Router, private rephreshService: RephreshService) {}
+  constructor(private router: Router, private refreshService: RefreshService) {}
 
   startRefreshing(cookies: Cookies) {
     // Check if the user is logged in
@@ -24,11 +24,11 @@ export class UserService {
     // Start a new subscription to periodically refresh
     this.refreshSubscription = interval(5 * 60 * 1000) // 5 minutes interval
       .pipe(
-        switchMap(() => this.rephreshService.getUser(cookies)),
+        switchMap(() => this.refreshService.getUser(cookies)),
         tap((data: any) => {
           // Check if the received data is valid
           if (data && data.student) {
-            console.log('Data received:');
+            console.log('Data received');
             // Update the user data in local storage
             localStorage.setItem('user', JSON.stringify(data.student));
             this.scheduleLocalStorageDeletion(); // Schedule local storage deletion
@@ -85,6 +85,10 @@ stopRefreshing() {
 
   private clearLocalStorageDeletion() {
     clearTimeout(this.timeoutId);
+  }
+
+  ngOnDestroy(): void {
+    this.stopRefreshing();
   }
 }
 

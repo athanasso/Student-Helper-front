@@ -6,9 +6,9 @@ import { Cookies } from './user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RephreshService {
+export class RefreshService {
 
-  private readonly rephreshEndPoint = environment.rephreshEndPoint;
+  private readonly refreshEndPoint = environment.refreshEndPoint;
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +19,6 @@ export class RephreshService {
 
     const cookiesJsonString = JSON.stringify(cookies);
 
-    return this.http.post(this.rephreshEndPoint, { cookies: cookiesJsonString }, { headers: headers });
+    return this.http.post(this.refreshEndPoint, { cookies: cookiesJsonString }, { headers: headers });
   }
 }
