@@ -24,9 +24,9 @@
     </div>
 
     <div class="right-side">
-      <div>
+      <div [formGroup]="selectForm">
         <label>{{ 'Services.ice1.select' | translate }}</label>
-        <select [(ngModel)]="selectedOption" class="select">
+        <select formControlName="selectedOption" class="select">
           <option value=""></option>
           <option value="software">{{ 'Services.ice1.software' | translate }}</option>
           <option value="hardware">{{ 'Services.ice1.hardware' | translate }}</option>
@@ -34,12 +34,12 @@
         </select>
       </div>
 
-      <div [hidden]="selectedOption !== 'software'" *ngIf="neededCourses.choiceCoursesPassedForSoftware>=12 && neededCourses.basicCoursesNeededForSoftware<=0">
+      <div [hidden]="selectForm.get('selectedOption')?.value !== 'software'" *ngIf="neededCourses.choiceCoursesPassedForSoftware>=12 && neededCourses.basicCoursesNeededForSoftware<=0">
         <mat-card>
           <mat-card-title>{{'Services.ice1.passed_flow' | translate}}</mat-card-title>
         </mat-card>
       </div>
-      <div [hidden]="selectedOption !== 'software'" *ngIf="neededCourses.choiceCoursesPassedForSoftware<12 && neededCourses.basicCoursesNeededForSoftware>0">
+      <div [hidden]="selectForm.get('selectedOption')?.value !== 'software'" *ngIf="neededCourses.choiceCoursesPassedForSoftware<12 && neededCourses.basicCoursesNeededForSoftware>0">
         <p>{{'Services.ice1.passed' | translate}} : {{ neededCourses.choiceCoursesPassedForSoftware }} </p>
         <p><span style="color: red;">{{'Services.ice1.need' | translate}} 16</span></p>
         <div *ngIf="neededCourses.basicCoursesNeededForSoftware > 0">
@@ -111,12 +111,12 @@
         </div>
       </div>
 
-      <div [hidden]="selectedOption !== 'hardware'" *ngIf="neededCourses.choiceCoursesPassedForHardware>=12 && neededCourses.basicCoursesNeededForHardware<=0">
+      <div [hidden]="selectForm.get('selectedOption')?.value !== 'hardware'" *ngIf="neededCourses.choiceCoursesPassedForHardware>=12 && neededCourses.basicCoursesNeededForHardware<=0">
         <mat-card>
           <mat-card-title>{{'Services.ice1.passed_flow' | translate}}</mat-card-title>
         </mat-card>
       </div>
-      <div [hidden]="selectedOption !== 'hardware'" *ngIf="neededCourses.choiceCoursesPassedForHardware<12 && neededCourses.basicCoursesNeededForHardware>0">
+      <div [hidden]="selectForm.get('selectedOption')?.value !== 'hardware'" *ngIf="neededCourses.choiceCoursesPassedForHardware<12 && neededCourses.basicCoursesNeededForHardware>0">
         <p>{{'Services.ice1.passed' | translate}} : {{ neededCourses.choiceCoursesPassedForHardware }} </p>
         <p><span style="color: red;">{{'Services.ice1.need' | translate}} 16</span></p>
         <div *ngIf="neededCourses.basicCoursesNeededForHardware > 0">
@@ -188,12 +188,12 @@
         </div>
       </div>
 
-      <div [hidden]="selectedOption !== 'network'" *ngIf="neededCourses.choiceCoursesPassedForNetwork>=12 && neededCourses.basicCoursesNeededForNetwork<=0">
+      <div [hidden]="selectForm.get('selectedOption')?.value !== 'network'" *ngIf="neededCourses.choiceCoursesPassedForNetwork>=12 && neededCourses.basicCoursesNeededForNetwork<=0">
         <mat-card>
           <mat-card-title>{{'Services.ice1.passed_flow' | translate}}</mat-card-title>
         </mat-card>
       </div>
-      <div [hidden]="selectedOption !== 'network'" *ngIf="neededCourses.choiceCoursesPassedForNetwork<12 && neededCourses.basicCoursesNeededForNetwork>0">
+      <div [hidden]="selectForm.get('selectedOption')?.value !== 'network'" *ngIf="neededCourses.choiceCoursesPassedForNetwork<12 && neededCourses.basicCoursesNeededForNetwork>0">
         <p>{{'Services.ice1.passed' | translate}} : {{ neededCourses.choiceCoursesPassedForNetwork }} </p>
         <p><span style="color: red;">{{'Services.ice1.need' | translate}} 16</span></p>
         <div *ngIf="neededCourses.basicCoursesNeededForNetwork > 0">

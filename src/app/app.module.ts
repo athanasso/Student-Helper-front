@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
@@ -43,13 +43,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         ServicesComponent,
         ImportComponent,
     ],
-    providers: [],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule,
         BrowserAnimationsModule,
         MatTableModule,
         MatCardModule,
@@ -63,7 +61,5 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
-        TranslateButtonComponent
-    ]
-})
+        TranslateButtonComponent], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

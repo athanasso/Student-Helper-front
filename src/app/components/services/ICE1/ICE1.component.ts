@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/services/user.service';
@@ -31,11 +32,15 @@ export class ICE1Component {
   choiceCoursesFromOtherBasicForNetwork!: MatTableDataSource<any>;
   generalCourses!: MatTableDataSource<any>;
 
-  selectedOption!: string;
+  selectForm!: FormGroup;
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, private fb: FormBuilder){}
 
   ngOnInit(): void {
+    this.selectForm = this.fb.group({
+      selectedOption: ['']
+    });
+
     let user = this.userService.getUser();
     this.neededCourses = user.grades.neededCourses;
     this.mandatoryCourses = new MatTableDataSource(this.neededCourses.mandatoryCoursesLeft);
